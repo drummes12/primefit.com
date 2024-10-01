@@ -10,8 +10,42 @@ import { SECTIONS } from "@/consts/sections";
   }
 </ul>
 
-<script>
-  import { $, $$ } from '@/lib/dom-selector'
+<style>
+  li {
+    @apply no-underline;
+    animation-name: section-desktop-enter;
+    animation-fill-mode: both;
+    animation-timeline: scroll();
+  }
 
-  // const optionsMenu = $$('#navbar-menu-desktop li')
-</script>
+  #navbar-especificaciones {
+    animation-range: entry 20% exit 40%;
+  }
+
+  #navbar-entrenador {
+    animation-range: entry 40% exit 60%;
+  }
+
+  #navbar-faq {
+    animation-range: entry 60% exit 80%;
+  }
+
+  #navbar-contacto {
+    animation-range: entry 80% cover;
+  }
+
+  @keyframes section-desktop-enter {
+    0% {
+      @apply no-underline;
+    }
+    10% {
+      @apply underline;
+    }
+    90% {
+      @apply underline;
+    }
+    100% {
+      @apply no-underline;
+    }
+  }
+</style>

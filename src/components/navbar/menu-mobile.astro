@@ -4,22 +4,22 @@ import { SECTIONS } from "@/consts/sections";
 
 <button
   id="navbar-hamburger"
-  class=`group sm:hidden flex flex-col justify-center items-center focus:outline-none border border-primary-color rounded-md p-2 aspect-square
+  class=`group sm:hidden flex flex-col justify-center items-center focus:outline-none border border-secondary-color rounded-md p-2 aspect-square bg-primary-color/70
   hover:scale-105 hover:shadow-md hover:bg-primary-color
   active:scale-95 active:shadow-inner transition`
   aria-label='Abrir menú'
 >
-  <span class="-translate-y-0.5 group-hover:border-slate-950"></span>
-  <span class="my-1 opacity-100 group-hover:border-slate-950"></span>
-  <span class="translate-y-0.5 group-hover:border-slate-950"></span>
+  <span class="-translate-y-0.5"></span>
+  <span class="my-1 opacity-100"></span>
+  <span class="translate-y-0.5"></span>
 </button>
 
 <ul id="navbar-menu-mobile" class=`z-10 w-full absolute left-0 top-full h-[calc(100dvh-100%)]
-  bg-primary-color/70 backdrop-blur-lg text-slate-950 shadow-lg
+  bg-primary-color/70 backdrop-blur-lg text-secondary-color shadow-lg
   flex flex-col p-6 -translate-x-full transition`>
   {
     SECTIONS.map(({ title, href }) => (
-      <li id={`navbar-${href.replaceAll('/#', '')}`} class="w-full border-b-2 text-2xl border-slate-950/30 hover:rounded-md hover:bg-primary-color hover:font-bold group-hover:opacity-30 hover:!opacity-100 transition"><a class="block w-full px-4 py-4" href={href}>{title}</a></li>
+      <li id={`navbar-${href.replaceAll('/#', '')}`} class="w-full border-b-2 text-2xl border-secondary-color/30 rounded-md hover:bg-primary-color group-hover:opacity-30 hover:!opacity-100 transition"><a class="block w-full px-4 py-4" href={href}>{title}</a></li>
     ))
   }
 </ul>
@@ -74,18 +74,38 @@ import { SECTIONS } from "@/consts/sections";
 
 <style>
   button span {
-    @apply border border-primary-color block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm;
+    @apply border border-secondary-color block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm;
   }
 
-  button, button span {
-    animation-name: nav-button-enter;
+  li {
+    @apply no-underline;
+    animation-name: section-mobile-enter;
     animation-fill-mode: both;
     animation-timeline: scroll();
-    animation-range: entry 0% cover 10%;
   }
-  @keyframes nav-button-enter {
-    to {
-      @apply border-slate-950;
+
+  #navbar-especificaciones {
+    animation-range: entry 20% exit 40%;
+  }
+
+  #navbar-entrenador {
+    animation-range: entry 40% exit 60%;
+  }
+
+  #navbar-faq {
+    animation-range: entry 60% exit 80%;
+  }
+
+  #navbar-contacto {
+    animation-range: entry 80% cover;
+  }
+
+  @keyframes section-mobile-enter {
+    10% {
+      @apply border-l-4 border-l-secondary-color bg-primary-color font-bold;
+    }
+    90% {
+      @apply border-l-4 border-l-secondary-color bg-primary-color font-bold;
     }
   }
 </style>

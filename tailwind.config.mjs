@@ -4,7 +4,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        'primary-color': '#ffae66'
+        'primary-color': '#ffae66',
+        'secondary-color': '#13151a'
       },
       fontFamily: {
         'special-elite': ['Special Elite', 'system-ui'],
