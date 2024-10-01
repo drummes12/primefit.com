@@ -1,0 +1,91 @@
+---
+import { SECTIONS } from "@/consts/sections";
+---
+
+<button
+  id="navbar-hamburger"
+  class=`group sm:hidden flex flex-col justify-center items-center focus:outline-none border border-primary-color rounded-md p-2 aspect-square
+  hover:scale-105 hover:shadow-md hover:bg-primary-color
+  active:scale-95 active:shadow-inner transition`
+  aria-label='Abrir menú'
+>
+  <span class="-translate-y-0.5 group-hover:border-slate-950"></span>
+  <span class="my-1 opacity-100 group-hover:border-slate-950"></span>
+  <span class="translate-y-0.5 group-hover:border-slate-950"></span>
+</button>
+
+<ul id="navbar-menu-mobile" class=`z-10 w-full absolute left-0 top-full h-[calc(100dvh-100%)]
+  bg-primary-color/70 backdrop-blur-lg text-slate-950 shadow-lg
+  flex flex-col p-6 -translate-x-full transition`>
+  {
+    SECTIONS.map(({ title, href }) => (
+      <li id={`navbar-${href.replaceAll('/#', '')}`} class="w-full border-b-2 text-2xl border-slate-950/30 hover:rounded-md hover:bg-primary-color hover:font-bold group-hover:opacity-30 hover:!opacity-100 transition"><a class="block w-full px-4 py-4" href={href}>{title}</a></li>
+    ))
+  }
+</ul>
+
+<script>
+  import { $, $$ } from '@/lib/dom-selector'
+
+  let mobileMenuOpen = false
+
+  const body = $('body')
+  const menu = $('#navbar-menu-mobile')
+  const button = $('#navbar-hamburger')
+  const line1 = $('#navbar-hamburger span:nth-child(1)')
+  const line2 = $('#navbar-hamburger span:nth-child(2)')
+  const line3 = $('#navbar-hamburger span:nth-child(3)')
+  const optionsMenu = $$('#navbar-menu-mobile li')
+
+  button?.addEventListener('click', () => {
+    mobileMenuOpen = !mobileMenuOpen
+
+    if (mobileMenuOpen) {
+      showMenu()
+      return
+    }
+
+    hideMenu()
+  });
+
+  optionsMenu.forEach((option) => {
+    option.addEventListener('click', () => {
+      mobileMenuOpen = false
+      hideMenu()
+    })
+  })
+
+  function showMenu() {
+    body?.classList.add('overflow-hidden')
+    menu?.classList.remove('-translate-x-full')
+    line1?.classList.add('!rotate-45', '!translate-y-[0.4rem]')
+    line2?.classList.add('!opacity-0')
+    line3?.classList.add('!-rotate-45', '!-translate-y-[0.4rem]')
+  }
+
+  function hideMenu() {
+    body?.classList.remove('overflow-hidden')
+    menu?.classList.add('-translate-x-full')
+    line1?.classList.remove('!rotate-45', '!translate-y-[0.4rem]')
+    line2?.classList.remove('!opacity-0')
+    line3?.classList.remove('!-rotate-45', '!-translate-y-[0.4rem]')
+  }
+</script>
+
+<style>
+  button span {
+    @apply border border-primary-color block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm;
+  }
+
+  button, button span {
+    animation-name: nav-button-enter;
+    animation-fill-mode: both;
+    animation-timeline: scroll();
+    animation-range: entry 0% cover 10%;
+  }
+  @keyframes nav-button-enter {
+    to {
+      @apply border-slate-950;
+    }
+  }
+</style>

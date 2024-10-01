@@ -1,46 +1,20 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '@/layouts/Layout.astro';
+import NavBar from '@/components/navbar/index.astro';
+
+import Hero from '@/components/hero/index.astro';
+import Especifications from '@/components/especifications/index.astro';
 ---
 
 <Layout title="Welcome to PrimeFit">
-	<nav class="top-0 fixed z-20 w-full sm:bg-primary-color sm:text-slate-950 px-8 py-4 flex gap-8 items-center justify-between">
-		<h1>Prime<span class="font-bold text-slate-400 sm:text-slate-800">Fit</span></h1>
-
-		<button
-      class='md:hidden flex flex-col justify-center items-center focus:outline-none border border-primary-color rounded-md p-2 aspect-square'
-      aria-label='Abrir menú'
-    >
-      <span
-        class="bg-primary-color block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm -translate-y-0.5"
-      ></span>
-      <span
-        class="bg-primary-color block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm my-0.5 opacity-100"
-      ></span>
-      <span
-        class="bg-primary-color block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm translate-y-0.5"
-      ></span>
-    </button>
-		<ul class="hidden sm:flex flex-1 items-center justify-end gap-4 w-full">
-			<li>Especificaciones</li>
-			<li>Entrenador</li>
-			<li>FAQ</li>
-			<li>Contacto</li>
-		</ul>
-	</nav>
+	<NavBar />
 
 	<main class="relative flex flex-col min-h-svh">
-		<div class="absolute -z-20 inset-0 mt-16 bg-[url('https://media.gq.com.mx/photos/625db17471f363f634bce022/master/pass/ejercicio-1388957838.jpg')] sepia bg-cover bg-center bg-no-repeat">
+		<div class="fixed -z-20 inset-0 mt-16 h-dvh w-full bg-[url('https://media.gq.com.mx/photos/625db17471f363f634bce022/master/pass/ejercicio-1388957838.jpg')] sepia bg-cover bg-center bg-no-repeat">
 		</div>
-		<div class='absolute -z-10 inset-0 mt-16 bg-[radial-gradient(transparent_10%,_#13151a_70%)]'></div>
+		<div class='fixed -z-10 inset-0 mt-16 h-dvh w-full bg-[radial-gradient(transparent_10%,_#13151a_70%)]'></div>
 
-		<section class="mx-auto flex flex-col h-dvh w-full max-w-screen-lg justify-end px-8 py-16">
-			<header class="flex-1 w-full flex items-center justify-center">
-				<h1 class="text-8xl uppercase skew-y-12 font-bold font-tourney rounded-md bg-slate-950 bg-opacity-40 backdrop-blur-sm w-full text-center">PrimeFit</h1>
-			</header>
-	
-			<p class="max-w-96 w-3/4 text-lg font-special-elite">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-	
-			<button class="mt-12 mx-auto w-min px-16 py-2 rounded-md backdrop-blur-sm shadow shadow-primary-color border border-primary-color text-xl hover:text-slate-950 hover:bg-primary-color hover:scale-105 transition">Comenzar</button>
-		</section>
+		<Hero />
+		<Especifications />
 	</main>
 </Layout>

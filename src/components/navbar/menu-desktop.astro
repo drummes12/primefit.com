@@ -1,0 +1,17 @@
+---
+import { SECTIONS } from "@/consts/sections";
+---
+
+<ul id="navbar-menu-desktop" class="hidden sm:flex items-center justify-end gap-8 w-full group">
+  {
+    SECTIONS.map(({ title, href }) => (
+      <li id={`navbar-${href.replaceAll('/#', '')}`} class="group-hover:opacity-30 hover:!opacity-100 transition"><a href={href}>{title}</a></li>
+    ))
+  }
+</ul>
+
+<script>
+  import { $, $$ } from '@/lib/dom-selector'
+
+  // const optionsMenu = $$('#navbar-menu-desktop li')
+</script>
