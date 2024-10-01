@@ -3,20 +3,80 @@ import Section from "../section.astro";
 ---
 
 <Section id="especificaciones">
-  <header class='flex-1 h-full w-full flex items-center justify-center'>
-    <h1 class='[font-size:clamp(4rem,12vw,6rem)] uppercase skew-y-12 font-bold font-tourney rounded-md bg-secondary-color bg-opacity-40 backdrop-blur-sm px-8 text-center'>
-      PrimeFit
-    </h1>
-  </header>
+  <div class="flex flex-col gap-8 w-full h-full">
+    <article>
+      <header>
+        <h1>Especificación 1</h1>
+      </header>
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+    </article>
 
-  <p class='line-clamp-6 max-w-96 w-3/4 text-base sm:text-lg font-special-elite'>
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-    Lorem Ipsum has been the industry's standard dummy text ever since the
-    1500s, when an unknown printer took a galley of type and scrambled it to
-    make a type specimen book.
-  </p>
+    <article>
+      <header>
+        <h1>Especificación 2</h1>
+      </header>
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+    </article>
 
-  <button class='mt-12 mx-auto w-min px-16 py-2 rounded-md backdrop-blur-sm shadow shadow-primary-color border border-primary-color text-xl hover:text-secondary-color hover:bg-primary-color hover:scale-105 transition'>
-    Comenzar
-  </button>
-</Section>
+    <article>
+      <header>
+        <h1>Especificación 3</h1>
+      </header>
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+    </article>
+
+    <article>
+      <header>
+        <h1>Especificación 4</h1>
+      </header>
+      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+    </article>
+  </div>
+  </Section>
+
+<style>
+  article {
+    @apply rounded-md border-2 border-primary-color text-primary-color p-4 flex-1 bg-secondary-color/30 backdrop-blur-md h-min w-min min-w-80 max-w-full;
+
+    view-timeline-name: --specification-timeline-name;
+    animation-name: specification-enter;
+    animation-fill-mode: both;
+    animation-timeline: --specification-timeline-name;
+    animation-range: entry 10% cover 20%;
+  }
+
+  article:first-child {
+    --initial-enter: translateY(150%);
+    --end-enter: translateY(0);
+    margin-inline: auto;
+  }
+
+  article:nth-child(2) {
+    --initial-enter: translateX(-150%);
+    --end-enter: translateX(0);
+    margin-left: auto;
+  }
+
+  article:nth-child(3) {
+    --initial-enter: translateX(150%);
+    --end-enter: translateX(0);
+    margin-right: auto;
+  }
+
+  article:last-child {
+    --initial-enter: translateY(150%);
+    --end-enter: translateY(0);
+    margin-inline: auto;
+  }
+
+  @keyframes specification-enter {
+    from {
+      transform: var(--initial-enter);
+      opacity: 0;
+    }
+    to {
+      transform: var(--end-enter);
+      opacity: 1;
+    }
+  }
+</style>
