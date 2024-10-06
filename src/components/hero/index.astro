@@ -2,21 +2,28 @@
 import Section from "../section.astro";
 ---
 
-<Section id="hero">
-  <header class='flex-1 h-full w-full flex items-center justify-center'>
-    <h1 class='[font-size:clamp(4rem,12vw,6rem)] uppercase skew-y-12 font-bold font-tourney rounded-md bg-secondary-color bg-opacity-40 backdrop-blur-sm px-8 text-center'>
+<Section id="hero" class="!px-0">
+  <header class='flex-1 relative h-full w-full flex items-center justify-center'>
+		<div class="absolute -z-20 inset-0 h-full w-full bg-[url('https://media.gq.com.mx/photos/625db17471f363f634bce022/master/pass/ejercicio-1388957838.jpg')] sepia bg-cover bg-center bg-no-repeat">
+		</div>
+		<div class='absolute -z-10 top-0 h-1/2 w-full bg-gradient-to-b from-background-color to-transparent'></div>
+		<div class='absolute -z-10 bottom-0 h-1/2 w-full bg-gradient-to-t from-background-color to-transparent'></div>
+    
+    <h1 class='[font-size:clamp(4rem,12vw,6rem)] uppercase skew-y-12 font-extrabold rounded-md bg-background-color bg-opacity-40 backdrop-blur-sm px-8 text-center text-primary-color'>
       PrimeFit
     </h1>
   </header>
 
-  <p class='line-clamp-6 max-w-96 w-3/4 text-base sm:text-lg font-special-elite'>
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-    Lorem Ipsum has been the industry's standard dummy text ever since the
-    1500s, when an unknown printer took a galley of type and scrambled it to
-    make a type specimen book.
-  </p>
-
-  <button class='mt-12 mx-auto w-min px-16 py-2 rounded-md backdrop-blur-sm shadow shadow-primary-color border border-primary-color text-xl hover:text-secondary-color hover:bg-primary-color hover:scale-105 transition'>
-    Comenzar
-  </button>
+  <div class="px-8 flex flex-col">
+    <p class='line-clamp-6 max-w-96 w-3/4 text-base sm:text-lg text-primary-color'>
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+      Lorem Ipsum has been the industry's standard dummy text ever since the
+      1500s, when an unknown printer took a galley of type and scrambled it to
+      make a type specimen book.
+    </p>
+    
+    <button class='mt-12 mx-auto w-min px-16 py-2 rounded-md backdrop-blur-sm shadow shadow-primary-color border border-primary-color text-xl hover:text-secondary-color hover:bg-primary-color hover:scale-105 transition'>
+      Comenzar
+    </button>
+  </div>
 </Section>

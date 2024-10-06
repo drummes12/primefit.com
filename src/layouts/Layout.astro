@@ -1,7 +1,4 @@
 ---
-import '@fontsource/special-elite'
-import '@fontsource/tourney/200.css'
-
 interface Props {
 	title: string;
 	description?: string;
@@ -27,11 +24,9 @@ const { title, description = 'PrimeFit es un plan de 12 semanas para que transfo
 <style is:global>
 	:root {
 		color-scheme: light dark;
-		--primary-color: #ffae66;
 	}
 	html {
 		font-family: system-ui, sans-serif;
-		background: #13151a;
-		color: var(--primary-color);
+		@apply bg-background-color text-primary-color;
 	}
 </style>

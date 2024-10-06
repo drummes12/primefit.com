@@ -4,12 +4,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        'primary-color': '#ffae66',
-        'secondary-color': '#13151a'
-      },
-      fontFamily: {
-        'special-elite': ['Special Elite', 'system-ui'],
-        tourney: ['Tourney', 'system-ui']
+        'primary-color': '#e46c2b',
+        'secondary-color': '#31382E',
+        'tertiary-color': '#00FFC8',
+        'accent-color': '#FFE1D0',
+        'background-color': '#1b171d'
       }
     }
   },

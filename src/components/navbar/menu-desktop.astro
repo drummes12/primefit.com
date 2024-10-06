@@ -2,10 +2,10 @@
 import { SECTIONS } from "@/consts/sections";
 ---
 
-<ul id="navbar-menu-desktop" class="hidden sm:flex items-center justify-end gap-8 w-full group">
+<ul id="navbar-menu-desktop" class="hidden sm:flex items-center justify-end w-full group">
   {
     SECTIONS.map(({ title, href }) => (
-      <li id={`navbar-${href.replaceAll('/#', '')}`} class="group-hover:opacity-30 hover:!opacity-100 transition"><a href={href}>{title}</a></li>
+      <li id={`navbar-${href.replaceAll('/#', '')}`} class="group-hover:opacity-30 hover:!opacity-100 px-6 py-4 transition"><a href={href}>{title}</a></li>
     ))
   }
 </ul>
@@ -17,16 +17,16 @@ import { SECTIONS } from "@/consts/sections";
 
   @keyframes section-desktop-enter {
     0% {
-      @apply no-underline;
+      @apply bg-transparent;
     }
     10% {
-      @apply underline;
+      @apply bg-primary-color;
     }
     90% {
-      @apply underline;
+      @apply bg-primary-color;
     }
     100% {
-      @apply no-underline;
+      @apply bg-transparent;
     }
   }
 </style>
