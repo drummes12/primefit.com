@@ -1,0 +1,75 @@
+---
+import PlusIcon from '@/icons/plus.astro'
+
+export interface Props {
+  class?: string
+}
+
+const { class: className = '' } = Astro.props
+---
+
+<article class={'group ' + className}>
+  <div
+    class='-z-10 absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_1000px_at_50%_0,#1b171d,transparent)]'
+  >
+  </div>
+
+  <section
+    class='w-full h-full text-center flex flex-col justify-center items-center gap-8 py-2 md:py-8'
+  >
+    <slot />
+  </section>
+
+  <!-- <div
+    class='ml-auto p-1 size-10 rounded-full border border-primary-color/30 group-hover:border-primary-color/70 transition'
+  >
+    <PlusIcon class='w-full h-full stroke-1 group-hover:stroke-2' />
+  </div> -->
+</article>
+
+<style>
+  article {
+    @apply flex flex-col bg-primary-color/10 hover:bg-primary-color/70 p-4 overflow-hidden relative rounded-2xl border border-primary-color/30 text-primary-color backdrop-blur-lg hover:border-primary-color/70 transition;
+
+    view-timeline-name: --specification-timeline-name;
+    animation-name: specification-enter;
+    animation-fill-mode: both;
+    animation-timeline: --specification-timeline-name;
+    animation-range: entry 10% cover 20%;
+  }
+
+  article:nth-child(1) {
+    @apply md:col-span-2 md:row-span-1;
+  }
+
+  article:nth-child(2) {
+    @apply md:col-span-1 md:row-span-1;
+  }
+
+  article:nth-child(3) {
+    @apply md:col-span-1 md:row-span-1;
+  }
+
+  article:nth-child(4) {
+    @apply md:col-span-2 md:row-span-2;
+  }
+
+  article:nth-child(5) {
+    @apply md:col-span-2 md:row-span-1;
+  }
+
+  article:nth-child(6) {
+    @apply md:col-span-2 md:row-span-1;
+  }
+
+  @keyframes specification-enter {
+    from {
+      transform: translateY(150%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+</style>
