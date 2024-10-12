@@ -1,18 +1,24 @@
 ---
 import MenuDesktop from './menu-desktop.astro'
 import MenuMobile from './menu-mobile.astro'
-
-
 ---
 
-<nav id="navbar" class="top-0 fixed z-20 w-full px-6 py-3 sm:py-0 flex gap-8 items-center justify-between">
-  <div class="-z-10 inset-0 absolute backdrop-blur-lg w-full h-full border-b border-b-secondary-color/30"></div>
-  <a href="/">
-    <h1>Prime<span class="font-bold opacity-70">Fit</span></h1>
-  </a>
+<nav class='top-2 fixed z-20 w-full px-2'>
+  <div
+    id='navbar'
+    class='relative px-6 sm:px-1 py-3 sm:py-0 flex gap-8 items-center justify-between max-w-screen-lg w-full mx-auto rounded-full'
+  >
+    <div
+      class='-z-10 inset-0 absolute backdrop-blur-lg max-w-screen-lg w-full mx-auto h-full rounded-full'
+    >
+    </div>
+    <a href='/' class='block sm:pl-6'>
+      <h1>Prime<span class='font-bold opacity-70'>Fit</span></h1>
+    </a>
 
-  <MenuMobile />
-  <MenuDesktop />
+    <MenuMobile />
+    <MenuDesktop />
+  </div>
 </nav>
 
 <style is:global>

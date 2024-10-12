@@ -1,25 +1,35 @@
 ---
-import { SECTIONS } from "@/consts/sections";
+import { SECTIONS } from '@/consts/sections'
 ---
 
 <button
-  id="navbar-hamburger"
+  id='navbar-hamburger'
   class=`group sm:hidden flex flex-col justify-center items-center focus:outline-none border border-secondary-color rounded-md p-2 aspect-square bg-primary-color/70
   hover:scale-105 hover:shadow-md hover:bg-primary-color
   active:scale-95 active:shadow-inner transition`
   aria-label='Abrir menú'
 >
-  <span class="-translate-y-0.5"></span>
-  <span class="my-1 opacity-100"></span>
-  <span class="translate-y-0.5"></span>
+  <span class='-translate-y-0.5'></span>
+  <span class='my-1 opacity-100'></span>
+  <span class='translate-y-0.5'></span>
 </button>
 
-<ul id="navbar-menu-mobile" class=`z-10 w-full absolute left-0 top-full h-[calc(100dvh-100%)]
+<ul
+  id='navbar-menu-mobile'
+  class=`z-10 w-full absolute left-0 top-[calc(100%+0.5rem)] h-[calc(100dvh-100%-1.5rem)]
   bg-primary-color/70 backdrop-blur-lg text-secondary-color shadow-lg
-  flex flex-col p-6 -translate-x-full transition`>
+  flex flex-col p-6 -translate-x-[500%] transition rounded-xl`
+>
   {
     SECTIONS.map(({ title, href }) => (
-      <li id={`navbar-${href.replaceAll('/#', '')}`} class="w-full border-b-2 text-2xl border-secondary-color/30 rounded-md hover:bg-primary-color group-hover:opacity-30 hover:!opacity-100 transition"><a class="block w-full px-4 py-4" href={href}>{title}</a></li>
+      <li
+        id={`navbar-${href.replaceAll('/#', '')}`}
+        class='w-full border-b-2 text-2xl border-secondary-color/30 rounded-md hover:bg-primary-color group-hover:opacity-30 hover:!opacity-100 transition'
+      >
+        <a class='block w-full px-4 py-4' href={href}>
+          {title}
+        </a>
+      </li>
     ))
   }
 </ul>
@@ -46,7 +56,7 @@ import { SECTIONS } from "@/consts/sections";
     }
 
     hideMenu()
-  });
+  })
 
   optionsMenu.forEach((option) => {
     option.addEventListener('click', () => {
@@ -57,7 +67,7 @@ import { SECTIONS } from "@/consts/sections";
 
   function showMenu() {
     body?.classList.add('overflow-hidden')
-    menu?.classList.remove('-translate-x-full')
+    menu?.classList.remove('-translate-x-[500%]')
     line1?.classList.add('!rotate-45', '!translate-y-[0.4rem]')
     line2?.classList.add('!opacity-0')
     line3?.classList.add('!-rotate-45', '!-translate-y-[0.4rem]')
@@ -65,7 +75,7 @@ import { SECTIONS } from "@/consts/sections";
 
   function hideMenu() {
     body?.classList.remove('overflow-hidden')
-    menu?.classList.add('-translate-x-full')
+    menu?.classList.add('-translate-x-[500%]')
     line1?.classList.remove('!rotate-45', '!translate-y-[0.4rem]')
     line2?.classList.remove('!opacity-0')
     line3?.classList.remove('!-rotate-45', '!-translate-y-[0.4rem]')

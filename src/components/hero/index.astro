@@ -1,28 +1,48 @@
 ---
-import Section from "../section.astro";
+import Section from '../section.astro'
 ---
 
-<Section id="hero" class="!px-0">
-  <header class='flex-1 relative h-full w-full flex items-center justify-center'>
-		<div class="absolute -z-20 inset-0 h-full w-full bg-[url('https://media.gq.com.mx/photos/625db17471f363f634bce022/master/pass/ejercicio-1388957838.jpg')] sepia bg-cover bg-center bg-no-repeat">
-		</div>
-		<div class='absolute -z-10 top-0 h-1/2 w-full bg-gradient-to-b from-background-color to-transparent'></div>
-		<div class='absolute -z-10 bottom-0 h-1/2 w-full bg-gradient-to-t from-background-color to-transparent'></div>
-    
-    <h1 class='[font-size:clamp(4rem,12vw,6rem)] uppercase skew-y-12 font-extrabold rounded-md bg-background-color bg-opacity-40 backdrop-blur-sm px-8 text-center text-primary-color'>
-      PrimeFit
+<div
+  class="absolute -z-20 top-10 left-0 h-dvh w-full bg-[url('https://media.gq.com.mx/photos/625db17471f363f634bce022/master/pass/ejercicio-1388957838.jpg')] bg-cover bg-top bg-no-repeat"
+>
+  <div
+    class='absolute -z-10 top-0 h-1/2 w-full bg-gradient-to-b from-background-color to-transparent'
+  >
+  </div>
+  <div
+    class='absolute -z-10 bottom-0 h-1/2 w-full bg-gradient-to-t from-background-color to-transparent'
+  >
+  </div>
+</div>
+<Section id='hero' class='!px-0'>
+  <header
+    class='flex-1 relative h-full w-full flex items-center justify-center'
+  >
+    <h1
+      class='[font-size:clamp(6rem,12vw,8rem)] uppercase font-extrabold [text-shadow:_0_10px_10px_rgb(0_0_0_/_70%)] tracking-[-1rem] sm:tracking-[-1.25rem]'
+    >
+      <span>P</span>
+      <span>r</span>
+      <span>i</span>
+      <span>m</span>
+      <span>e</span>
+      <span>F</span>
+      <span>i</span>
+      <span>t</span>
     </h1>
   </header>
 
-  <div class="px-8 flex flex-col">
-    <p class='line-clamp-6 max-w-96 w-3/4 text-base sm:text-lg text-primary-color'>
+  <div class='px-8 flex flex-col justify-center text-center'>
+    <p class='line-clamp-6 text-base sm:text-lg text-accent-color'>
       Lorem Ipsum is simply dummy text of the printing and typesetting industry.
       Lorem Ipsum has been the industry's standard dummy text ever since the
       1500s, when an unknown printer took a galley of type and scrambled it to
       make a type specimen book.
     </p>
-    
-    <button class='mt-12 mx-auto w-min px-16 py-2 rounded-md backdrop-blur-sm shadow shadow-primary-color border border-primary-color text-xl hover:text-secondary-color hover:bg-primary-color hover:scale-105 transition'>
+
+    <button
+      class='mt-8 mx-auto w-min px-16 py-2 text-xl bg-primary-color text-background-color border border-primary-color backdrop-blur-sm hover:text-primary-color hover:bg-transparent hover:scale-105 transition'
+    >
       Comenzar
     </button>
   </div>
