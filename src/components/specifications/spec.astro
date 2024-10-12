@@ -29,7 +29,7 @@ const { class: className = '' } = Astro.props
 
 <style>
   article {
-    @apply flex flex-col bg-primary-color/10 hover:bg-primary-color/70 p-4 overflow-hidden relative rounded-2xl border border-primary-color/30 text-primary-color backdrop-blur-lg hover:border-primary-color/70 transition;
+    @apply flex flex-col bg-primary-color/70 border-primary-color/70 sm:bg-primary-color/10 sm:hover:bg-primary-color/70 p-4 overflow-hidden relative rounded-2xl border sm:border-primary-color/30 backdrop-blur-lg sm:hover:border-primary-color/70 transition;
 
     view-timeline-name: --specification-timeline-name;
     animation-name: specification-enter;

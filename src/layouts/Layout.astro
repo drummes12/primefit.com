@@ -1,37 +1,53 @@
 ---
 interface Props {
-	title: string;
-	description?: string;
+  title: string
+  description?: string
 }
 
-const { title, description = 'PrimeFit es un plan de 12 semanas para que transformes tu vida.' } = Astro.props;
+const {
+  title,
+  description = 'PrimeFit es un plan de 12 semanas para que transformes tu vida.'
+} = Astro.props
 ---
 
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content={description} />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='description' content={description} />
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <meta name='generator' content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
 </html>
 <style is:global>
-	:root {
-		color-scheme: light dark;
-		--primary-color: #e46c2b;
-		--secondary-color: #31382E;
-		--tertiary-color: #00FFC8;
-		--accent-color: #FFE1D0;
-		--background-color: #1b171d;
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		@apply bg-background-color text-primary-color;
-	}
+  :root {
+    color-scheme: light dark;
+    --primary-color: #e46c2b;
+    --secondary-color: #31382e;
+    --tertiary-color: #00ffc8;
+    --accent-color: #ffe1d0;
+    --background-color: #1b171d;
+  }
+  html {
+    font-family: system-ui, sans-serif;
+    @apply bg-background-color text-primary-color;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-wrap: pretty;
+  }
+  p,
+  small {
+    text-wrap: balance;
+  }
 </style>
