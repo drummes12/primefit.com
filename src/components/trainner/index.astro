@@ -1,10 +1,67 @@
 ---
-import Section from "../section.astro";
+import Marquee from '../marquee.astro'
+import Section from '../section.astro'
 ---
 
-<Section id="entrenador">
-  <article>
-    <header>Entrenador</header>
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+<Marquee class='bg-primary-color py-2' velocity='slow'>
+  <p class='text-secondary-color'>ENTRENAMIENTO</p>
+  <span class='text-accent-color/70'>&nbsp;&#10022;&nbsp;</span>
+  <p class='text-secondary-color'>NUTRICION</p>
+  <span class='text-accent-color/70'>&nbsp;&#10022;&nbsp;</span>
+  <p class='text-secondary-color'>DESAFIO</p>
+  <span class='text-accent-color/70'>&nbsp;&#10022;&nbsp;</span>
+  <p class='text-secondary-color'>TRABAJO</p>
+  <span class='text-accent-color/70'>&nbsp;&#10022;&nbsp;</span>
+</Marquee>
+
+<Section id='entrenador' class='md:!flex-row gap-8 items-center justify-center'>
+  <div class='w-full md:hidden'>
+    <div
+      class="w-full h-auto aspect-video rounded-xl bg-[url('https://media.gq.com.mx/photos/625db17471f363f634bce022/master/pass/ejercicio-1388957838.jpg')] bg-cover bg-center bg-no-repeat"
+    >
+    </div>
+  </div>
+
+  <div
+    class='flex-1 h-full hidden md:flex flex-row gap-1 justify-center items-center'
+  >
+    <div
+      class="flex-1 mb-4 h-96 bg-[url('https://media.gq.com.mx/photos/625db17471f363f634bce022/master/pass/ejercicio-1388957838.jpg')] bg-cover bg-center bg-no-repeat"
+    >
+    </div>
+    <div
+      class="flex-1 mt-4 h-96 bg-[url('https://media.gq.com.mx/photos/625db17471f363f634bce022/master/pass/ejercicio-1388957838.jpg')] bg-cover bg-center bg-no-repeat"
+    >
+    </div>
+  </div>
+
+  <article class='md:flex-1 w-full'>
+    <h1
+      class='text-[clamp(2.5rem,4vw,3rem)] uppercase font-extrabold tracking-tighter leading-none'
+    >
+      Sobre el entrenador
+    </h1>
+    <h2
+      class='text-2xl uppercase font-light text-accent-color opacity-70 leading-none tracking-tighter'
+    >
+      El entrenador es un experto en el mundo de la nutrición y la salud
+    </h2>
+    <p class='mt-4 opcaity-70'>
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+      Lorem Ipsum has been the industry's standard dummy text ever since the
+      1500s, when an unknown printer took a galley of type and scrambled it to
+      make a type specimen book.
+    </p>
   </article>
 </Section>
+
+<Marquee class='py-2' velocity='slow'>
+  <p class='text-primary-color'>ENTRENAMIENTO</p>
+  <span class='text-tertiary-color/70'>&nbsp;&#10022;&nbsp;</span>
+  <p class='text-primary-color'>NUTRICION</p>
+  <span class='text-tertiary-color/70'>&nbsp;&#10022;&nbsp;</span>
+  <p class='text-primary-color'>DESAFIO</p>
+  <span class='text-tertiary-color/70'>&nbsp;&#10022;&nbsp;</span>
+  <p class='text-primary-color'>TRABAJO</p>
+  <span class='text-tertiary-color/70'>&nbsp;&#10022;&nbsp;</span>
+</Marquee>

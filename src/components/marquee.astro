@@ -1,0 +1,35 @@
+---
+export interface Props {
+  class?: string
+  velocity?: 'slow' | 'medium' | 'fast'
+}
+
+const { class: className = '', velocity = 'medium' } = Astro.props
+
+const duration = {
+  slow: '[--duration:30s]',
+  medium: '[--duration:20s]',
+  fast: '[--duration:10s]'
+}
+---
+
+<div class={`${className} relative w-full overflow-hidden`}>
+  <div
+    class={`languages relative flex flex-col w-full gap-y-1 [--gap:1rem] ${duration[velocity]}`}
+  >
+    <div
+      class='overflow-x-clip flex flex-row gap-[--gap] w-max origin-left h-12 sm:h-14 text-5xl sm:text-6xl font-bold group'
+    >
+      <div
+        class='flex gap-[--gap] w-max animate-marquee items-center group-hover:sm:[animation-play-state:paused]'
+      >
+        <slot />
+      </div>
+      <div
+        class='flex gap-[--gap] w-max animate-marquee items-center group-hover:sm:[animation-play-state:paused]'
+      >
+        <slot />
+      </div>
+    </div>
+  </div>
+</div>
