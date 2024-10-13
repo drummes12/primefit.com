@@ -1,10 +1,38 @@
 ---
-import Section from "../section.astro";
+import Section from '../section.astro'
+import ItemFaq from './item-faq.astro'
+import BgPrimefit from '../bg-primefit/index.astro'
 ---
 
-<Section id="faq">
-  <article>
-    <header>FAQ</header>
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-  </article>
-</Section>
+<div class='relative'>
+  <BgPrimefit />
+  <Section id='faq'>
+    <h1
+      class='text-[clamp(2.5rem,4vw,3rem)] uppercase font-extrabold tracking-tighter leading-none mb-4'
+    >
+      Preguntas frecuentes
+    </h1>
+    <ul class='flex flex-col gap-4 w-full'>
+      <ItemFaq
+        question='¿Cuántos días de entrenamiento tengo?'
+        answer='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
+      />
+      <ItemFaq
+        question='¿Cuántos días de entrenamiento tengo?'
+        answer='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
+      />
+      <ItemFaq
+        question='¿Cuántos días de entrenamiento tengo?'
+        answer='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
+      />
+      <ItemFaq
+        question='¿Cuántos días de entrenamiento tengo?'
+        answer='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
+      />
+      <ItemFaq
+        question='¿Cuántos días de entrenamiento tengo?'
+        answer='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
+      />
+    </ul>
+  </Section>
+</div>

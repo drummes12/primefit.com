@@ -1,0 +1,59 @@
+---
+export interface Props {
+  class?: string
+  question: string
+  answer: string
+}
+
+const { class: className = '', question, answer } = Astro.props
+---
+
+<li>
+  <details name='faq' class={`${className}`} open>
+    <summary>
+      <div class='-z-10 absolute inset-0 transition delay-300'></div>
+      {question}
+    </summary>
+
+    <article>
+      <div class='-z-10 absolute inset-0'></div>
+      <p>
+        {answer}
+      </p>
+    </article>
+  </details>
+</li>
+
+<style>
+  details {
+    @apply overflow-hidden rounded-md backdrop-blur-lg marker:text-tertiary-color transition;
+
+    summary {
+      @apply relative rounded-t-md border-2 border-primary-color/30 cursor-pointer p-4 transition;
+    }
+
+    &[open] summary {
+      @apply border-primary-color/70;
+    }
+
+    &[open] summary div {
+      @apply bg-gradient-to-r from-primary-color/30 to-transparent;
+    }
+
+    &:not([open]) summary div {
+      @apply bg-gradient-to-l from-primary-color/30 to-transparent;
+    }
+
+    article {
+      @apply relative rounded-b-md border-2 border-tertiary-color/30 p-4 bg-secondary-color/30 text-accent-color font-light;
+    }
+
+    article div {
+      background-image: radial-gradient(
+        ellipse at left top,
+        #00ffc85e,
+        transparent
+      );
+    }
+  }
+</style>

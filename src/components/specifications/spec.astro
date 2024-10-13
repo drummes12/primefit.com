@@ -10,7 +10,7 @@ const { class: className = '' } = Astro.props
 
 <article class={'group ' + className}>
   <div
-    class='-z-10 absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_1000px_at_50%_0,#1b171d,transparent)]'
+    class='-z-10 absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(ellipse_at_center_top,#1b171d,transparent)]'
   >
   </div>
 
@@ -29,7 +29,7 @@ const { class: className = '' } = Astro.props
 
 <style>
   article {
-    @apply flex flex-col bg-primary-color/70 border-primary-color/70 sm:bg-primary-color/10 sm:hover:bg-primary-color/70 p-4 overflow-hidden relative rounded-2xl border sm:border-primary-color/30 backdrop-blur-lg sm:hover:border-primary-color/70 transition;
+    @apply flex flex-col bg-primary-color/40 border-primary-color/70 sm:bg-primary-color/10 sm:hover:bg-primary-color/40 p-4 overflow-hidden relative rounded-2xl border sm:border-primary-color/30 backdrop-blur-lg sm:hover:border-primary-color/70 transition;
 
     view-timeline-name: --specification-timeline-name;
     animation-name: specification-enter;
