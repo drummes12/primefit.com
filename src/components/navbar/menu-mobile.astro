@@ -1,5 +1,9 @@
 ---
 import { SECTIONS } from '@/consts/sections'
+import InstagramIcon from '@/icons/instagram.astro'
+import PhoneIcon from '@/icons/phone.astro'
+import WhatsappIcon from '@/icons/whatsapp.astro'
+import MailIcon from '@/icons/mail.astro'
 ---
 
 <button
@@ -14,25 +18,57 @@ import { SECTIONS } from '@/consts/sections'
   <span class='translate-y-0.5'></span>
 </button>
 
-<ul
+<div
   id='navbar-menu-mobile'
-  class=`z-10 w-full absolute left-0 top-[calc(100%+0.5rem)] h-[calc(100dvh-100%-1.5rem)]
-  bg-primary-color/70 backdrop-blur-lg text-secondary-color shadow-lg
-  flex flex-col p-6 -translate-x-[500%] transition rounded-xl`
+  class=`z-50 w-full absolute left-0 top-[calc(100%+0.5rem)] h-[calc(100dvh-100%-1.5rem)]
+  bg-primary-color/70 backdrop-blur-lg text-secondary-color shadow-lg p-6 -translate-x-[500%] transition rounded-xl flex flex-col justify-between items-center gap-4 overflow-hidden`
 >
-  {
-    SECTIONS.map(({ title, href }) => (
-      <li
-        id={`navbar-${href.replaceAll('/#', '')}`}
-        class='w-full border-b-2 text-2xl border-secondary-color/30 rounded-md hover:bg-primary-color group-hover:opacity-30 hover:!opacity-100 transition'
-      >
-        <a class='block w-full px-4 py-4' href={href}>
-          {title}
-        </a>
-      </li>
-    ))
-  }
-</ul>
+  <ul class='flex flex-col w-full'>
+    {
+      SECTIONS.map(({ title, href }) => (
+        <li
+          id={`navbar-${href.replaceAll('/#', '')}`}
+          class='w-full border-b-2 text-2xl border-secondary-color/30 rounded-md hover:bg-primary-color group-hover:opacity-30 hover:!opacity-100 transition'
+        >
+          <a class='block w-full px-4 py-4' href={href}>
+            {title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
+  <div class='w-full flex justify-between items-center gap-2'>
+    <a
+      href='#'
+      class='rounded-lg p-2 text-secondary-color hover:text-primary-color hover:bg-secondary-color transition border border-secondary-color/70'
+    >
+      <WhatsappIcon class='size-8' />
+      <span class='sr-only'>Escribenos por Whatsapp</span>
+    </a>
+    <a
+      href='#'
+      class='rounded-lg p-2 text-secondary-color hover:text-primary-color hover:bg-secondary-color transition border border-secondary-color/70'
+    >
+      <MailIcon class='size-8' />
+      <span class='sr-only'>Mandanos un correo</span>
+    </a>
+    <a
+      href='#'
+      class='rounded-lg p-2 text-secondary-color hover:text-primary-color hover:bg-secondary-color transition border border-secondary-color/70'
+    >
+      <PhoneIcon class='size-8' />
+      <span class='sr-only'>Llamanos o escribenos</span>
+    </a>
+    <a
+      href='#'
+      class='rounded-lg p-2 text-secondary-color hover:text-primary-color hover:bg-secondary-color transition border border-secondary-color/70'
+    >
+      <InstagramIcon class='size-8' />
+      <span class='sr-only'>Visita Nuestra Página de Instagram</span>
+    </a>
+  </div>
+</div>
 
 <script>
   import { $, $$ } from '@/lib/dom-selector'
