@@ -1,10 +1,143 @@
 ---
-import Section from "../section.astro";
+import InstagramIcon from '@/icons/instagram.astro'
+import WhatsappIcon from '@/icons/whatsapp.astro'
+import PhoneIcon from '@/icons/phone.astro'
+import Section from '../section.astro'
 ---
 
-<Section id="contacto">
-  <article>
-    <header>Contacto</header>
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-  </article>
+<Section id='contacto' class='!p-0 !max-w-full'>
+  <div
+    class='relative py-16 flex flex-col sm:flex-row w-full min-h-dvh h-full mx-auto max-w-screen-lg justify-center items-center'
+  >
+    <h1
+      class='sm:absolute top-0 left-0 [font-size:clamp(2rem,12vw,8rem)] uppercase font-extrabold tracking-tighter leading-none mx-8 sm:my-16'
+    >
+      Contactanos
+    </h1>
+
+    <form
+      class='flex-1 relative sm:min-w-96 w-full max-w-screen-sm h-full px-8 py-16 flex flex-col justify-center items-start'
+      onsubmit='return false'
+    >
+      <div class='relative z-0 w-full mb-5 group'>
+        <input
+          type='text'
+          name='name'
+          id='name'
+          class='block py-2.5 px-0 w-full text-sm text-primary-color bg-transparent border-0 border-b-2 border-secondary-color appearance-none focus:outline-none focus:ring-0 focus:border-tertiary-color peer placeholder-transparent focus:placeholder-accent-color/30 autofill:bg-background-color'
+          placeholder='PrimeFit'
+          required
+        />
+        <label
+          for='name'
+          class='uppercase peer-focus:font-medium absolute text-sm text-primary-color/70 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-primary-color peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 line-clamp-1 truncate w-full overflow-hidden'
+          >Tu Nombre</label
+        >
+      </div>
+
+      <div class='w-full grid md:grid-cols-2 md:gap-6'>
+        <div class='relative z-0 w-full mb-5 group'>
+          <input
+            type='email'
+            name='email'
+            id='email'
+            class='block py-2.5 px-0 w-full text-sm text-primary-color bg-transparent border-0 border-b-2 border-secondary-color appearance-none focus:outline-none focus:ring-0 focus:border-tertiary-color peer placeholder-transparent focus:placeholder-accent-color/30 autofill:bg-background-color'
+            placeholder='prime@fit.com'
+            required
+          />
+          <label
+            for='email'
+            class='uppercase peer-focus:font-medium absolute text-sm text-primary-color/70 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-primary-color peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 line-clamp-1 truncate w-full overflow-hidden'
+            >Tu correo</label
+          >
+        </div>
+        <div class='relative z-0 w-full mb-5 group'>
+          <input
+            type='tel'
+            name='phone_number'
+            id='phone_number'
+            class='block py-2.5 px-0 w-full text-sm text-primary-color bg-transparent border-0 border-b-2 border-secondary-color appearance-none focus:outline-none focus:ring-0 focus:border-tertiary-color peer placeholder-transparent focus:placeholder-accent-color/30 autofill:bg-background-color'
+            placeholder='+57 (300) 123-4567'
+            required
+          />
+          <label
+            for='phone_number'
+            class='uppercase peer-focus:font-medium absolute text-sm text-primary-color/70 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-primary-color peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 line-clamp-1 truncate w-full overflow-hidden'
+            >Tu número de teléfono</label
+          >
+        </div>
+      </div>
+
+      <div class='relative z-0 w-full mb-5 group'>
+        <input
+          type='text'
+          name='message'
+          id='message'
+          class='block py-2.5 px-0 w-full text-sm text-primary-color bg-transparent border-0 border-b-2 border-secondary-color appearance-none focus:outline-none focus:ring-0 focus:border-tertiary-color peer placeholder-transparent focus:placeholder-accent-color/30 autofill:bg-background-color'
+          placeholder='Quiero mas información...'
+          required
+        />
+        <label
+          for='message'
+          class='uppercase peer-focus:font-medium absolute text-sm text-primary-color/70 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-primary-color peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 line-clamp-1 truncate w-full overflow-hidden'
+          >Deja tu mensaje</label
+        >
+      </div>
+
+      <button
+        class='mt-4 w-min px-16 py-2 text-xl bg-primary-color text-background-color border border-primary-color backdrop-blur-sm hover:text-primary-color hover:bg-transparent hover:scale-105 transition'
+        type='submit'>Enviar</button
+      >
+
+      <div class='mt-8'>
+        <h3 class='uppercase text-sm text-primary-color/70'>
+          Envianos un correo
+        </h3>
+        <a class='text-primary-color' href='mailto:contacto@primefit.com'>
+          contacto@primefit.com
+        </a>
+      </div>
+    </form>
+
+    <article
+      class='bg-secondary-color mx-4 p-4 flex flex-col justify-center items-center max-w-md text-right'
+    >
+      <p class='mb-4 font-extralight text-accent-color leading-tight'>
+        Es muy importante para nosotros mantenernos en contacto contigo, por eso
+        estamos siempre listos para responder cualquier pregunta que tengas. ¡No
+        dudes en escribirnos!
+      </p>
+
+      <ul class='flex flex-col gap-2 w-full items-end'>
+        <li>
+          <a
+            class='flex flex-row gap-2'
+            href='https://www.instagram.com/primefit/'
+            target='_blank'
+            rel='noreferrer'
+          >
+            @primefit
+            <InstagramIcon class='size-6' />
+          </a>
+        </li>
+        <li>
+          <a
+            class='flex flex-row gap-2'
+            href='https://api.whatsapp.com/send/?phone=%2B573001234567&text&type=phone_number&app_absent=0'
+            target='_blank'
+            rel='noreferrer'
+          >
+            +57 (300) 123-4567
+            <WhatsappIcon class='size-6' />
+          </a>
+        </li>
+        <li>
+          <a class='flex flex-row gap-2' href='tel:+573001234567'>
+            +57 (300) 123-4567
+            <PhoneIcon class='size-6' />
+          </a>
+        </li>
+      </ul>
+    </article>
+  </div>
 </Section>
