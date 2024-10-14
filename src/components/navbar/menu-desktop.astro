@@ -10,7 +10,7 @@ import { SECTIONS } from '@/consts/sections'
     SECTIONS.map(({ title, href }) => (
       <li
         id={`navbar-${href.replaceAll('/#', '')}`}
-        class='group-hover:opacity-30 hover:!opacity-100 px-6 py-4 transition rounded-full'
+        class='sm:group-hover:opacity-30 sm:hover:!opacity-100 px-6 py-4 transition rounded-full'
       >
         <a href={href}>{title}</a>
       </li>
