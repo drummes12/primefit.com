@@ -6,14 +6,61 @@ import Section from '../section.astro'
 ---
 
 <Section id='contacto' class='!p-0 !max-w-full'>
-  <div
-    class='relative py-16 mb-12 sm:mb-0 flex flex-col sm:flex-row w-full min-h-dvh h-full mx-auto max-w-screen-lg justify-center items-center'
+  <h1
+    class='[font-size:clamp(2rem,12vw,8rem)] uppercase font-extrabold tracking-tighter max-w-screen-lg w-full mx-auto px-8'
   >
-    <h1
-      class='sm:absolute top-0 left-0 [font-size:clamp(2rem,12vw,8rem)] uppercase font-extrabold tracking-tighter leading-none mx-8 sm:my-16'
+    Contactanos
+  </h1>
+  <div
+    class='pb-16 mb-12 sm:mb-0 flex flex-col sm:flex-row w-full h-full mx-auto max-w-screen-lg justify-center items-center'
+  >
+    <article
+      class='relative bg-background-color/70 rounded-lg mx-4 p-4 flex flex-col justify-center items-center max-w-md text-right'
     >
-      Contactanos
-    </h1>
+      <div
+        class='-z-10 absolute aspect-square rounded-full bg-tertiary-color/30 w-80 blur-3xl'
+      >
+      </div>
+      <p class='mb-4 font-extralight text-accent-color leading-tight'>
+        Es muy importante para nosotros mantenernos en contacto contigo, por eso
+        estamos siempre listos para responder cualquier pregunta que tengas. ¡No
+        dudes en escribirnos!
+      </p>
+
+      <ul class='flex flex-col gap-2 w-full items-end'>
+        <li>
+          <a
+            class='flex flex-row gap-2 hover:underline'
+            href='https://www.instagram.com/primefit/'
+            target='_blank'
+            rel='noreferrer'
+          >
+            @primefit
+            <InstagramIcon class='size-6' />
+          </a>
+        </li>
+        <li>
+          <a
+            class='flex flex-row gap-2 hover:underline'
+            href='https://api.whatsapp.com/send/?phone=%2B573001234567&text&type=phone_number&app_absent=0'
+            target='_blank'
+            rel='noreferrer'
+          >
+            +57 (300) 123-4567
+            <WhatsappIcon class='size-6' />
+          </a>
+        </li>
+        <li>
+          <a
+            class='flex flex-row gap-2 hover:underline'
+            href='tel:+573001234567'
+          >
+            +57 (300) 123-4567
+            <PhoneIcon class='size-6' />
+          </a>
+        </li>
+      </ul>
+    </article>
 
     <form
       class='flex-1 relative sm:min-w-96 w-full max-w-screen-sm h-full px-8 py-16 flex flex-col justify-center items-start'
@@ -93,51 +140,13 @@ import Section from '../section.astro'
         <h3 class='uppercase text-sm text-primary-color/70'>
           Envianos un correo
         </h3>
-        <a class='text-primary-color' href='mailto:contacto@primefit.com'>
+        <a
+          class='text-primary-color hover:underline'
+          href='mailto:contacto@primefit.com'
+        >
           contacto@primefit.com
         </a>
       </div>
     </form>
-
-    <article
-      class='bg-secondary-color mx-4 p-4 flex flex-col justify-center items-center max-w-md text-right'
-    >
-      <p class='mb-4 font-extralight text-accent-color leading-tight'>
-        Es muy importante para nosotros mantenernos en contacto contigo, por eso
-        estamos siempre listos para responder cualquier pregunta que tengas. ¡No
-        dudes en escribirnos!
-      </p>
-
-      <ul class='flex flex-col gap-2 w-full items-end'>
-        <li>
-          <a
-            class='flex flex-row gap-2'
-            href='https://www.instagram.com/primefit/'
-            target='_blank'
-            rel='noreferrer'
-          >
-            @primefit
-            <InstagramIcon class='size-6' />
-          </a>
-        </li>
-        <li>
-          <a
-            class='flex flex-row gap-2'
-            href='https://api.whatsapp.com/send/?phone=%2B573001234567&text&type=phone_number&app_absent=0'
-            target='_blank'
-            rel='noreferrer'
-          >
-            +57 (300) 123-4567
-            <WhatsappIcon class='size-6' />
-          </a>
-        </li>
-        <li>
-          <a class='flex flex-row gap-2' href='tel:+573001234567'>
-            +57 (300) 123-4567
-            <PhoneIcon class='size-6' />
-          </a>
-        </li>
-      </ul>
-    </article>
   </div>
 </Section>

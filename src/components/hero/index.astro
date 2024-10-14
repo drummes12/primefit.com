@@ -11,7 +11,7 @@ import Section from '../section.astro'
     class='flex-1 relative h-full w-full flex items-center justify-center'
   >
     <h1
-      class='[font-size:clamp(5.5rem,12vw,8rem)] uppercase font-extrabold [text-shadow:_0_10px_10px_rgb(0_0_0_/_70%)] tracking-[-1rem] md:tracking-[-1.25rem] line-clamp-1 truncate'
+      class='[font-size:clamp(5.5rem,12vw,8rem)] uppercase font-extrabold [text-shadow:_0_10px_10px_rgb(0_0_0_/_70%)] tracking-[-1rem] md:tracking-[-1.25rem]'
     >
       <span>P</span>
       <span>r</span>
@@ -39,3 +39,14 @@ import Section from '../section.astro'
     </button>
   </div>
 </Section>
+
+<style>
+  h1 {
+    overflow: visible;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+</style>
