@@ -11,7 +11,7 @@ import Section from '../section.astro'
     class='flex-1 relative h-full w-full flex items-center justify-center'
   >
     <h1
-      class='[font-size:clamp(5.5rem,12vw,8rem)] uppercase font-extrabold [text-shadow:_0_10px_10px_rgb(0_0_0_/_70%)] tracking-[-1rem] md:tracking-[-1.25rem]'
+      class='[font-size:clamp(5rem,12vw,8rem)] uppercase font-extrabold [text-shadow:_0_10px_10px_rgb(0_0_0_/_70%)] tracking-[-1rem] md:tracking-[-1.25rem] min-h-20 leading-none'
     >
       <span>P</span>
       <span>r</span>
@@ -25,11 +25,18 @@ import Section from '../section.astro'
   </header>
 
   <div class='px-8 flex flex-col justify-center text-center'>
-    <p class='line-clamp-6 text-base sm:text-lg text-accent-color'>
+    <p
+      class='hidden sm:block line-clamp-6 text-base font-extralight sm:text-lg text-accent-color'
+    >
       Lorem Ipsum is simply dummy text of the printing and typesetting industry.
       Lorem Ipsum has been the industry's standard dummy text ever since the
       1500s, when an unknown printer took a galley of type and scrambled it to
       make a type specimen book.
+    </p>
+    <p
+      class='sm:hidden line-clamp-6 text-base font-extralight sm:text-lg text-accent-color'
+    >
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry.
     </p>
 
     <button
