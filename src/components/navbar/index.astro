@@ -12,8 +12,10 @@ import MenuMobile from './menu-mobile.astro'
       class='-z-10 inset-0 absolute backdrop-blur-lg contrast-150 max-w-screen-lg w-full mx-auto h-full rounded-full'
     >
     </div>
-    <a href='/' class='block sm:pl-6'>
-      <h1>Prime<span class='font-bold opacity-70'>Fit</span></h1>
+    <a href='/' class='block sm:pl-6 uppercase font-bold'>
+      <h1>
+        Prime<span class='text-accent-color text-opacity-70'>Fit</span>
+      </h1>
     </a>
 
     <MenuMobile />
@@ -53,6 +55,6 @@ import MenuMobile from './menu-mobile.astro'
   }
 
   #navbar #navbar-contacto {
-    animation-range: entry 80% cover;
+    animation-range: entry 80% exit 110%;
   }
 </style>

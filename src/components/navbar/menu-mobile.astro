@@ -28,7 +28,7 @@ import MailIcon from '@/icons/mail.astro'
       SECTIONS.map(({ title, href }) => (
         <li
           id={`navbar-${href.replaceAll('/#', '')}`}
-          class='w-full border-b-2 text-2xl border-secondary-color/30 rounded-md hover:bg-primary-color group-hover:opacity-30 hover:!opacity-100 transition'
+          class='w-full border-b-2 text-2xl border-secondary-color/30 rounded-md hover:bg-primary-color'
         >
           <a class='block w-full px-4 py-4' href={href}>
             {title}
@@ -128,17 +128,11 @@ import MailIcon from '@/icons/mail.astro'
   }
 
   @keyframes section-mobile-enter {
-    0% {
-      @apply border-l-0 bg-transparent font-normal;
-    }
     1% {
-      @apply border-l-4 border-l-secondary-color bg-primary-color font-bold;
+      @apply border-l-4 bg-primary-color font-bold;
     }
     99% {
-      @apply border-l-4 border-l-secondary-color bg-primary-color font-bold;
-    }
-    100% {
-      @apply border-l-0 bg-transparent font-normal;
+      @apply border-l-4 bg-primary-color font-bold;
     }
   }
 </style>
