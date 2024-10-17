@@ -36,3 +36,24 @@ import BgPrimefit from '../bg-primefit/index.astro'
     </ul>
   </Section>
 </div>
+
+<style>
+  h1 {
+    view-timeline-name: --faq-tittle-timeline-name;
+    animation-name: faq-tittle-enter;
+    animation-fill-mode: both;
+    animation-timeline: --faq-tittle-timeline-name;
+    animation-range: entry 20% cover 40%;
+  }
+
+  @keyframes faq-tittle-enter {
+    from {
+      transform: translateY(-150%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+</style>

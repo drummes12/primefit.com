@@ -9,3 +9,24 @@
     </span>
   </div>
 </footer>
+
+<style>
+  footer {
+    view-timeline-name: --footer-timeline-name;
+    animation-name: footer-enter;
+    animation-fill-mode: both;
+    animation-timeline: --footer-timeline-name;
+    animation-range: entry 0% cover 5%;
+  }
+
+  @keyframes footer-enter {
+    from {
+      transform: scale(0) translateY(-150%);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+    }
+  }
+</style>

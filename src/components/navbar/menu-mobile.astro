@@ -128,11 +128,17 @@ import MailIcon from '@/icons/mail.astro'
   }
 
   @keyframes section-mobile-enter {
-    10% {
+    0% {
+      @apply border-l-0 bg-transparent font-normal;
+    }
+    1% {
       @apply border-l-4 border-l-secondary-color bg-primary-color font-bold;
     }
-    90% {
+    99% {
       @apply border-l-4 border-l-secondary-color bg-primary-color font-bold;
+    }
+    100% {
+      @apply border-l-0 bg-transparent font-normal;
     }
   }
 </style>

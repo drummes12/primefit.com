@@ -15,25 +15,23 @@ import Section from '../section.astro'
 </Marquee>
 
 <Section id='entrenador' class='md:!flex-row gap-8 items-center justify-center'>
-  <div class='w-full md:hidden'>
-    <div
-      class="w-full h-auto aspect-video rounded-xl bg-[url('https://media.gq.com.mx/photos/625db17471f363f634bce022/master/pass/ejercicio-1388957838.jpg')] bg-cover bg-center bg-no-repeat"
-    >
-    </div>
-  </div>
+  <img
+    src='https://media.gq.com.mx/photos/625db17471f363f634bce022/master/pass/ejercicio-1388957838.jpg'
+    class='md:hidden w-full h-auto aspect-video rounded-xl object-cover object-center'
+  />
 
-  <div
+  <figure
     class='flex-1 h-full hidden md:flex flex-row gap-1 justify-center items-center'
   >
-    <div
-      class="flex-1 mb-4 h-96 bg-[url('https://media.gq.com.mx/photos/625db17471f363f634bce022/master/pass/ejercicio-1388957838.jpg')] bg-cover bg-center bg-no-repeat"
-    >
-    </div>
-    <div
-      class="flex-1 mt-4 h-96 bg-[url('https://media.gq.com.mx/photos/625db17471f363f634bce022/master/pass/ejercicio-1388957838.jpg')] bg-cover bg-center bg-no-repeat"
-    >
-    </div>
-  </div>
+    <img
+      src='https://media.gq.com.mx/photos/625db17471f363f634bce022/master/pass/ejercicio-1388957838.jpg'
+      class='flex-1 mb-4 h-96 object-cover object-center overflow-hidden'
+    />
+    <img
+      src='https://media.gq.com.mx/photos/625db17471f363f634bce022/master/pass/ejercicio-1388957838.jpg'
+      class='flex-1 mt-4 h-96 object-cover object-center overflow-hidden'
+    />
+  </figure>
 
   <article class='md:flex-1 w-full'>
     <h1
@@ -42,11 +40,11 @@ import Section from '../section.astro'
       Sobre el entrenador
     </h1>
     <h2
-      class='text-2xl uppercase font-light text-accent-color opacity-70 leading-none tracking-tighter'
+      class='text-2xl uppercase font-light text-accent-color text-opacity-70 leading-none tracking-tighter'
     >
       El entrenador es un experto en el mundo de la nutrición y la salud
     </h2>
-    <p class='mt-4 opcaity-70'>
+    <p class='mt-4 text-opacity-70'>
       Lorem Ipsum is simply dummy text of the printing and typesetting industry.
       Lorem Ipsum has been the industry's standard dummy text ever since the
       1500s, when an unknown printer took a galley of type and scrambled it to
@@ -65,3 +63,80 @@ import Section from '../section.astro'
   <p class='text-primary-color'>TRABAJO</p>
   <span class='text-tertiary-color/70'>&nbsp;&#10022;&nbsp;</span>
 </Marquee>
+
+<style>
+  h1 {
+    view-timeline-name: --trainner-tittle-timeline-name;
+    animation-name: trainner-tittle-enter;
+    animation-fill-mode: both;
+    animation-timeline: --trainner-tittle-timeline-name;
+    animation-range: entry 10% cover 20%;
+  }
+
+  @keyframes trainner-tittle-enter {
+    from {
+      transform: translateY(150%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  h2,
+  p {
+    view-timeline-name: --trainner-text-timeline-name;
+    animation-name: trainner-text-enter;
+    animation-fill-mode: both;
+    animation-timeline: --trainner-text-timeline-name;
+    animation-range: entry 30% cover 50%;
+  }
+
+  @keyframes trainner-text-enter {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  img {
+    view-timeline-name: --trainner-img-mobile-timeline-name;
+    animation-name: trinner-img-mobile-enter;
+    animation-fill-mode: both;
+    animation-timeline: --trainner-img-mobile-timeline-name;
+    animation-range: entry 10% cover 40%;
+  }
+
+  @keyframes trinner-img-mobile-enter {
+    from {
+      transform: scale(0) translateY(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+    }
+  }
+
+  figure img {
+    view-timeline-name: --trainner-img-timeline-name;
+    animation-name: trinner-img-enter;
+    animation-fill-mode: both;
+    animation-timeline: --trainner-img-timeline-name;
+    animation-range: entry 10% cover 20%;
+  }
+
+  @keyframes trinner-img-enter {
+    from {
+      transform: translateX(-150%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+</style>

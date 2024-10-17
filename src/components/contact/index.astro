@@ -6,11 +6,14 @@ import Section from '../section.astro'
 ---
 
 <Section id='contacto' class='!p-0 !max-w-full'>
-  <h1
-    class='[font-size:clamp(2rem,12vw,8rem)] uppercase font-extrabold tracking-tighter max-w-screen-lg w-full mx-auto px-8 py-8 sm:py-0'
-  >
-    Contactanos
-  </h1>
+  <div class='mx-auto w-full max-w-screen-lg px-8 py-8 sm:py-0'>
+    <h1
+      class='[font-size:clamp(2rem,12vw,8rem)] uppercase font-extrabold tracking-tighter'
+    >
+      Contactanos
+    </h1>
+  </div>
+
   <div
     class='mb-24 sm:mb-16 flex flex-col gap-8 sm:flex-row w-full h-full mx-auto max-w-screen-lg justify-center items-center'
   >
@@ -157,3 +160,62 @@ import Section from '../section.astro'
     </article>
   </div>
 </Section>
+
+<style>
+  h1 {
+    @apply overflow-hidden whitespace-nowrap;
+
+    view-timeline-name: --contact-tittle-timeline-name;
+    animation-name: contact-tittle-enter;
+    animation-fill-mode: both;
+    animation-timeline: --contact-tittle-timeline-name;
+    animation-range: entry 20% cover 40%;
+  }
+
+  @keyframes contact-tittle-enter {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  form {
+    view-timeline-name: --contact-form-timeline-name;
+    animation-name: contact-form-enter;
+    animation-fill-mode: both;
+    animation-timeline: --contact-form-timeline-name;
+    animation-range: entry 10% cover 20%;
+  }
+
+  @keyframes contact-form-enter {
+    from {
+      transform: translateX(-150%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  article {
+    view-timeline-name: --contact-article-timeline-name;
+    animation-name: contact-article-enter;
+    animation-fill-mode: both;
+    animation-timeline: --contact-article-timeline-name;
+    animation-range: entry 10% cover 20%;
+  }
+
+  @keyframes contact-article-enter {
+    from {
+      transform: translateX(150%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+</style>

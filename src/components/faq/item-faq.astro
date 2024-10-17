@@ -55,5 +55,26 @@ const { class: className = '', question, answer } = Astro.props
         transparent
       );
     }
+
+    view-timeline-name: --faq-item-timeline-name;
+    animation-name: faq-item-enter;
+    animation-fill-mode: both;
+    animation-timeline: --faq-item-timeline-name;
+    animation-range: entry 10% cover 30%;
+  }
+
+  li {
+    perspective: 100rem;
+  }
+
+  @keyframes faq-item-enter {
+    from {
+      transform: rotateX(-90deg);
+      opacity: 0;
+    }
+    to {
+      transform: rotateX(0deg);
+      opacity: 1;
+    }
   }
 </style>
