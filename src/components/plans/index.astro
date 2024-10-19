@@ -1,0 +1,125 @@
+---
+import Section from '../section.astro'
+import PlansItem from './plans-item.astro'
+
+import { PLANS } from '@/consts/plans'
+---
+
+<div class='relative'>
+  <div
+    class='absolute -z-10 inset-0 w-full h-full overflow-x-clip blur-md md:blur-lg'
+  >
+    <div
+      id='bg-plans'
+      class=`absolute top-20 -right-32 origin-right h-60 w-2/3 md:w-1/2 bg-gradient-to-l from-primary-color/40 to-transparent
+        [clip-path:polygon(0%_0%,_100%_30%,100%_70%,0%_100%)]
+      `
+    >
+    </div>
+    <div
+      id='bg-plans'
+      class=`absolute top-20 -left-32 origin-left h-60 w-2/3 md:w-1/2 bg-gradient-to-r from-tertiary-color/40 to-transparent
+        [clip-path:polygon(0%_30%,_100%_0%,100%_100%,0%_70%)]
+      `
+    >
+    </div>
+  </div>
+
+  <Section id='planes'>
+    <div class='mx-auto text-center'>
+      <h1
+        class='[font-size:clamp(2rem,12vw,8rem)] font-extrabold tracking-tighter leading-tight'
+      >
+        Escoge tu plan
+      </h1>
+      <small class='text-xl text-opacity-70'
+        >Desbloquea infinitas posibilidades</small
+      >
+    </div>
+
+    <div
+      class='mt-16 flex flex-col md:flex-row gap-4 w-full h-full justify-center items-center'
+    >
+      {PLANS.map((plan) => <PlansItem {...plan} />)}
+    </div>
+  </Section>
+</div>
+
+<style>
+  #bg-plans {
+    view-timeline-name: --plans-bg-timeline-name;
+    animation-fill-mode: both;
+    animation-timeline: --plans-bg-timeline-name;
+    animation-range: entry 10% cover 100%;
+  }
+  #bg-plans:nth-child(1) {
+    animation-name: plans-bg1-enter;
+  }
+  #bg-plans:nth-child(2) {
+    animation-name: plans-bg2-enter;
+  }
+  @keyframes plans-bg1-enter {
+    0% {
+      transform: translateX(100%) rotate(0);
+      opacity: 0;
+    }
+    30% {
+      transform: translateX(0%) rotate(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(250%) rotate(60deg);
+      opacity: 1;
+    }
+  }
+  @keyframes plans-bg2-enter {
+    0% {
+      transform: translateX(-100%) rotate(0);
+      opacity: 0;
+    }
+    30% {
+      transform: translateX(0%) rotate(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(250%) rotate(-60deg);
+      opacity: 1;
+    }
+  }
+
+  h1 {
+    @apply overflow-hidden whitespace-nowrap;
+
+    view-timeline-name: --plans-tittle-timeline-name;
+    animation-name: plans-tittle-enter;
+    animation-fill-mode: both;
+    animation-timeline: --plans-tittle-timeline-name;
+    animation-range: entry 20% cover 40%;
+  }
+  small {
+    @apply block;
+    view-timeline-name: --plans-small-timeline-name;
+    animation-name: plans-small-enter;
+    animation-fill-mode: both;
+    animation-timeline: --plans-small-timeline-name;
+    animation-range: entry 20% cover 40%;
+  }
+
+  @keyframes plans-tittle-enter {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  @keyframes plans-small-enter {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+</style>

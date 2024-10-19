@@ -1,0 +1,74 @@
+---
+import ScheckIcon from '@/icons/check.astro'
+
+interface Props {
+  popular?: boolean
+  title: string
+  description: string
+  cost: {
+    value: string
+    unit?: string
+  }
+  specs: string[]
+}
+
+const { popular, title, description, cost, specs = [] } = Astro.props
+---
+
+<article
+  class={`flex-1 relative h-min px-4 py-6 rounded-2xl bg-gradient-to-b to-transparent ${popular ? 'order-first md:order-none from-accent-color/15 py-14' : 'from-accent-color/[1%]'} border border-accent-color/10 text-accent-color backdrop-blur-xl hover:border-accent-color/70 hover:from-accent-color/30 transition flex flex-col justify-center items-center`}
+>
+  {
+    popular && (
+      <small class='absolute top-0 right-0 m-4 px-3 py-1 border border-accent-color/10 bg-accent-color/10 rounded-full text-xs shadow-md'>
+        Popular
+      </small>
+    )
+  }
+  <div class='flex flex-col'>
+    <h2 class='text-3xl text-primary-color mb-2'>{title}</h2>
+    <p class='flex-1 text-sm text-opacity-70 leading-tight line-clamp-3 h-20'>
+      {description}
+    </p>
+
+    <h3 class='text-5xl flex my-8'>
+      {cost.value}<span class='text-base text-primary-color'>{cost.unit}</span>
+    </h3>
+
+    <button
+      class='w-full rounded-full mb-4 bg-accent-color/20 py-2 px-4 border border-accent-color/10 hover:bg-primary-color hover:text-secondary-color hover:border-primary-color transition'
+      >Empieza</button
+    >
+    <ul class='text-sm divide-y-[1px] divide-accent-color/30'>
+      {
+        specs.map((spec) => (
+          <li class='flex gap-2 items-center py-2'>
+            <ScheckIcon class='size-4 text-primary-color' />
+            {spec}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</article>
+
+<style>
+  article {
+    view-timeline-name: --plans-item-timeline-name;
+    animation-name: plans-item-enter;
+    animation-fill-mode: both;
+    animation-timeline: --plans-item-timeline-name;
+    animation-range: entry 10% cover 20%;
+  }
+
+  @keyframes plans-item-enter {
+    from {
+      transform: translateY(150%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+</style>
