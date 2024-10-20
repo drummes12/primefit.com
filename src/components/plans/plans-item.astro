@@ -18,7 +18,7 @@ const { id, popular, title, description, cost, specs = [] } = Astro.props
 
 <article
   id={'plan-' + id}
-  class={`flex-1 relative w-full h-min px-4 py-6 rounded-2xl bg-gradient-to-b to-transparent ${popular ? 'order-first md:order-none from-accent-color/15 md:py-14' : 'from-accent-color/[1%]'} border border-accent-color/10 text-accent-color backdrop-blur-xl hover:border-accent-color/70 hover:from-accent-color/30 transition flex flex-col justify-center items-center`}
+  class={`flex-1 relative w-full h-min px-4 py-6 rounded-lg bg-gradient-to-b to-transparent ${popular ? 'order-first md:order-none from-accent-color/15 md:py-14' : 'from-accent-color/[1%]'} border border-accent-color/10 text-accent-color backdrop-blur-xl hover:border-accent-color/70 hover:from-accent-color/30 transition flex flex-col justify-center items-center`}
 >
   {
     popular && (

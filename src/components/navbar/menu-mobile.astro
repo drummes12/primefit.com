@@ -8,7 +8,7 @@ import MailIcon from '@/icons/mail.astro'
 
 <button
   id='navbar-hamburger'
-  class=`group sm:hidden flex flex-col justify-center items-center focus:outline-none border border-secondary-color rounded-md p-2 aspect-square bg-primary-color/70
+  class=`group sm:hidden flex flex-col justify-center items-center focus:outline-none border border-secondary-color rounded-lg p-2 aspect-square bg-primary-color/70
   hover:scale-105 hover:shadow-md hover:bg-primary-color
   active:scale-95 active:shadow-inner transition`
   aria-label='Abrir menú'
@@ -21,14 +21,14 @@ import MailIcon from '@/icons/mail.astro'
 <div
   id='navbar-menu-mobile'
   class=`z-50 w-full absolute left-0 top-[calc(100%+0.5rem)] h-[calc(100dvh-100%-1.5rem)]
-  bg-primary-color/70 backdrop-blur-lg text-secondary-color shadow-lg p-6 -translate-x-[500%] transition rounded-xl flex flex-col justify-between items-center gap-4 overflow-hidden`
+  bg-primary-color/70 backdrop-blur-lg text-secondary-color shadow-lg p-6 -translate-x-[500%] transition rounded-lg flex flex-col justify-between items-center gap-4 overflow-hidden`
 >
   <ul class='flex flex-col w-full'>
     {
       SECTIONS.map(({ title, href }) => (
         <li
           id={`navbar-${href.replaceAll('/#', '')}`}
-          class='w-full border-b-2 text-2xl border-secondary-color/30 rounded-md hover:bg-primary-color'
+          class='w-full border-b-2 text-2xl border-secondary-color/30 rounded-lg hover:bg-primary-color'
         >
           <a class='block w-full px-4 py-4' href={href}>
             {title}
@@ -120,7 +120,7 @@ import MailIcon from '@/icons/mail.astro'
 
 <style>
   button span {
-    @apply border border-secondary-color block transition-all duration-300 ease-out h-0.5 w-6 rounded-sm;
+    @apply border border-secondary-color block transition-all duration-300 ease-out h-0.5 w-6 rounded-lg;
   }
 
   li {

@@ -65,7 +65,8 @@ export const PLANS = [
         placeholder: '+57 (300) 123-4567',
         required: true
       }
-    ]
+    ],
+    popular: true
   },
   {
     id: 'primefit-pro',

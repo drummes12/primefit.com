@@ -26,10 +26,10 @@ const { class: className = '', question, answer } = Astro.props
 
 <style>
   details {
-    @apply overflow-hidden rounded-md backdrop-blur-lg marker:text-tertiary-color transition;
+    @apply overflow-hidden rounded-lg backdrop-blur-lg marker:text-tertiary-color transition;
 
     summary {
-      @apply relative rounded-t-md border-2 border-primary-color/30 cursor-pointer p-4 transition;
+      @apply relative rounded-t-lg border-2 border-primary-color/30 cursor-pointer p-4 transition;
     }
 
     &[open] summary {
@@ -45,7 +45,7 @@ const { class: className = '', question, answer } = Astro.props
     }
 
     article {
-      @apply relative rounded-b-md border-2 border-tertiary-color/30 p-4 bg-secondary-color/30 text-accent-color font-light;
+      @apply relative rounded-b-lg border-2 border-tertiary-color/30 p-4 bg-secondary-color/30 text-accent-color font-light;
     }
 
     article div {
