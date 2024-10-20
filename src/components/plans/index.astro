@@ -1,6 +1,7 @@
 ---
 import Section from '../section.astro'
 import PlansItem from './plans-item.astro'
+import SendInfo from './send-info.astro'
 
 import { PLANS } from '@/consts/plans'
 ---
@@ -43,6 +44,8 @@ import { PLANS } from '@/consts/plans'
       {PLANS.map((plan) => <PlansItem {...plan} />)}
     </div>
   </Section>
+
+  <SendInfo />
 </div>
 
 <style>

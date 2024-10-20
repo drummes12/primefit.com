@@ -8,7 +8,30 @@ export const PLANS = [
       value: '8',
       unit: 'sesiones'
     },
-    specs: ['Entrenador', 'Nutritionista', 'Desafío']
+    specs: ['Entrenador', 'Nutritionista', 'Desafío'],
+    form: [
+      {
+        name: 'nombre',
+        label: 'Tu Nombre',
+        type: 'text',
+        placeholder: 'PrimeFit',
+        required: true
+      },
+      {
+        name: 'email',
+        label: 'Tu Correo',
+        type: 'email',
+        placeholder: 'prime@fit.com',
+        required: true
+      },
+      {
+        name: 'phone_number',
+        label: 'Tu Número de Teléfono',
+        type: 'tel',
+        placeholder: '+57 (300) 123-4567',
+        required: true
+      }
+    ]
   },
   {
     id: 'primefit',
@@ -20,7 +43,29 @@ export const PLANS = [
       // unit: 'USD'
     },
     specs: ['Entrenador', 'Nutritionista', 'Desafío'],
-    popular: true
+    form: [
+      {
+        name: 'nombre',
+        label: 'Tu Nombre',
+        type: 'text',
+        placeholder: 'PrimeFit',
+        required: true
+      },
+      {
+        name: 'email',
+        label: 'Tu Correo',
+        type: 'email',
+        placeholder: 'prime@fit.com',
+        required: true
+      },
+      {
+        name: 'phone_number',
+        label: 'Tu Número de Teléfono',
+        type: 'tel',
+        placeholder: '+57 (300) 123-4567',
+        required: true
+      }
+    ]
   },
   {
     id: 'primefit-pro',
@@ -31,6 +76,29 @@ export const PLANS = [
       value: '12',
       unit: 'sesiones'
     },
-    specs: ['Entrenador', 'Nutritionista', 'Desafío']
+    specs: ['Entrenador', 'Nutritionista', 'Desafío'],
+    form: [
+      {
+        name: 'nombre',
+        label: 'Tu Nombre',
+        type: 'text',
+        placeholder: 'PrimeFit',
+        required: true
+      },
+      {
+        name: 'email',
+        label: 'Tu Correo',
+        type: 'email',
+        placeholder: 'prime@fit.com',
+        required: true
+      },
+      {
+        name: 'phone_number',
+        label: 'Tu Número de Teléfono',
+        type: 'tel',
+        placeholder: '+57 (300) 123-4567',
+        required: true
+      }
+    ]
   }
 ]

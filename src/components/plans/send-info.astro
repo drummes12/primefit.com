@@ -1,0 +1,140 @@
+---
+import PlusIcon from '@/icons/plus.astro'
+---
+
+<dialog>
+  <header class='flex items-start justify-between'>
+    <div>
+      <h1 class='text-3xl text-primary-color mb-2'></h1>
+      <p class='flex-1 text-sm text-opacity-70 leading-tight'></p>
+    </div>
+    <button
+      class='p-1 rounded-full bg-background-color border border-primary-color hover:bg-primary-color hover:scale-105 hover:text-background-color transition text-primary-color'
+      aria-label='Close'><PlusIcon class='size-8 rotate-45' /></button
+    >
+  </header>
+
+  <form class='flex flex-col gap-4 pt-8' method='dialog'>
+    <div></div>
+    <button
+      type='submit'
+      class='w-full sm:max-w-64 mx-auto rounded-full bg-accent-color/20 py-2 px-4 border border-accent-color/10 hover:bg-primary-color hover:text-secondary-color hover:border-primary-color transition'
+      >Enviar</button
+    >
+  </form>
+</dialog>
+
+<template id='form-input-template'>
+  <div class='relative z-0 w-full sm:max-w-64 mb-5 group'>
+    <input
+      class='block py-2.5 px-0 w-full text-sm text-primary-color bg-transparent border-0 border-b-2 border-accent-color/10 appearance-none focus:outline-none focus:ring-0 focus:border-tertiary-color peer placeholder-transparent focus:placeholder-accent-color/30 autofill:bg-background-color'
+    />
+    <label
+      class='uppercase peer-focus:font-medium absolute text-sm text-primary-color/70 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-primary-color peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 line-clamp-1 truncate w-full overflow-hidden'
+    ></label>
+  </div>
+</template>
+
+<script>
+  import { PLANS } from '@/consts/plans'
+  import { $ } from '@/lib/dom-selector'
+
+  const $html = $('html') as HTMLHtmlElement
+  const $dialog = $('dialog') as HTMLDialogElement
+  const $buttonClose = $('dialog button') as HTMLButtonElement
+
+  $dialog.addEventListener('mousedown', (e) => {
+    if (e.target === $dialog) {
+      $html.classList.remove('overflow-hidden')
+      $dialog.close()
+    }
+  })
+  $buttonClose.addEventListener('click', () => {
+    $html.classList.remove('overflow-hidden')
+    $dialog.close()
+  })
+
+  PLANS.forEach(({ id, description, title, form }) => {
+    const $plan = $('#plan-' + id)
+    const $planButton = $plan?.querySelector('button') as HTMLButtonElement
+    $planButton.addEventListener('click', () => {
+      $dialog.showModal()
+      $html.classList.add('overflow-hidden')
+
+      const $h1 = $dialog?.querySelector('h1') as HTMLHeadingElement
+      $h1.innerHTML = title
+      const $p = $dialog?.querySelector('p') as HTMLParagraphElement
+      $p.innerHTML = description
+      const $form = $dialog?.querySelector('form') as HTMLFormElement
+
+      const $reeplaceInputs = $form.querySelector('div') as HTMLDivElement
+      const $addInputs = document.createElement('div')
+      $addInputs.setAttribute(
+        'class',
+        'flex flex-wrap items-center justify-center gap-4'
+      )
+
+      const $templateInput = $('#form-input-template') as HTMLTemplateElement
+      form.forEach(({ name, label, type, placeholder, required }) => {
+        const $newDiv = $templateInput.content.cloneNode(true) as HTMLDivElement
+
+        const $newInput = $newDiv.querySelector('input') as HTMLInputElement
+        $newInput.setAttribute('type', type)
+        $newInput.setAttribute('name', name)
+        $newInput.setAttribute('placeholder', placeholder)
+        $newInput.setAttribute('required', required ? 'required' : '')
+
+        const $newLabel = $newDiv.querySelector('label') as HTMLLabelElement
+        $newLabel.setAttribute('for', name)
+        $newLabel.innerHTML = label
+
+        $addInputs.appendChild($newDiv)
+      })
+      $reeplaceInputs.replaceWith($addInputs)
+    })
+  })
+</script>
+
+<style>
+  dialog {
+    @apply w-[calc(100%-2rem)] max-w-screen-md overflow-y-auto overflow-x-clip p-8 rounded-lg bg-background-color;
+
+    opacity: 0;
+    transform: translateY(-500%) scale(0);
+    transition:
+      opacity 0.3s ease-out,
+      transform 0.3s ease-out,
+      overlay 0.3s ease-out allow-discrete,
+      display 0.3s ease-out allow-discrete;
+  }
+
+  dialog[open] {
+    opacity: 1;
+    transform: translateY(0%) scale(1);
+  }
+
+  @starting-style {
+    dialog[open] {
+      opacity: 0;
+      transform: translateY(-500%) scale(0);
+    }
+  }
+
+  dialog::backdrop {
+    @apply bg-primary-color/0;
+    transition:
+      display 0.3s allow-discrete,
+      overlay 0.3s allow-discrete,
+      background-color 0.3s;
+  }
+
+  dialog[open]::backdrop {
+    @apply bg-secondary-color/30 backdrop-blur-sm;
+  }
+
+  @starting-style {
+    dialog[open]::backdrop {
+      @apply bg-secondary-color/30 backdrop-blur-sm;
+    }
+  }
+</style>
