@@ -75,7 +75,7 @@ import MailIcon from '@/icons/mail.astro'
 
   let mobileMenuOpen = false
 
-  const body = $('body')
+  const html = $('html')
   const menu = $('#navbar-menu-mobile')
   const button = $('#navbar-hamburger')
   const line1 = $('#navbar-hamburger span:nth-child(1)')
@@ -102,7 +102,7 @@ import MailIcon from '@/icons/mail.astro'
   })
 
   function showMenu() {
-    body?.classList.add('overflow-hidden')
+    html?.classList.add('overflow-y-hidden')
     menu?.classList.remove('-translate-x-[500%]')
     line1?.classList.add('!rotate-45', '!translate-y-[0.4rem]')
     line2?.classList.add('!opacity-0')
@@ -110,7 +110,7 @@ import MailIcon from '@/icons/mail.astro'
   }
 
   function hideMenu() {
-    body?.classList.remove('overflow-hidden')
+    html?.classList.remove('overflow-y-hidden')
     menu?.classList.add('-translate-x-[500%]')
     line1?.classList.remove('!rotate-45', '!translate-y-[0.4rem]')
     line2?.classList.remove('!opacity-0')

@@ -1,5 +1,6 @@
 export const PLANS = [
   {
+    id: 'primefit-plus',
     title: 'PrimeFit Plus',
     description:
       'PrimeFit es un plan de 8 sesiones por mes para que transformas tu vida.',
@@ -10,6 +11,7 @@ export const PLANS = [
     specs: ['Entrenador', 'Nutritionista', 'Desafío']
   },
   {
+    id: 'primefit',
     title: 'PrimeFit',
     description:
       'PrimeFit es un plan que te permite explotar tus potenciales y encontrar la forma de vivir que realmente te guste.',
@@ -21,6 +23,7 @@ export const PLANS = [
     popular: true
   },
   {
+    id: 'primefit-pro',
     title: 'PrimeFit Pro',
     description:
       'PrimeFit es un plan de 12 sesiones por mes para que transformas tu vida.',
