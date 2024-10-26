@@ -9,31 +9,34 @@ const { class: className = '', question, answer } = Astro.props
 ---
 
 <li>
-  <details name='faq' class={`${className}`} open>
+  <details name='faq' class:list={[className, 'relative']} aria-hidden='true'>
     <summary>
-      <div class='-z-10 absolute inset-0 transition delay-300'></div>
-      {question}
+      <h4 class='inline'>{question}</h4>
+      <div class='absolute inset-0 transition delay-300'></div>
     </summary>
 
-    <article>
-      <div class='-z-10 absolute inset-0'></div>
-      <p>
+    <article class='absolute top-full transition delay-300'>
+      <div class='absolute inset-0'></div>
+      <p class='z-10'>
         {answer}
       </p>
     </article>
   </details>
+
+  <h4 class='sr-only'>{question}</h4>
+  <p class='sr-only'>{answer}</p>
 </li>
 
 <style>
   details {
-    @apply overflow-hidden rounded-lg backdrop-blur-lg marker:text-tertiary-color transition;
+    @apply rounded-lg backdrop-blur-lg marker:text-tertiary-color transition;
 
     summary {
-      @apply relative rounded-t-lg border-2 border-primary-color/30 cursor-pointer p-4 transition;
+      @apply overflow-hidden relative rounded-t-lg border-2 border-primary-color/30 cursor-pointer p-4 transition rounded-b-lg;
     }
 
     &[open] summary {
-      @apply border-primary-color/70;
+      @apply border-primary-color/70 rounded-b-none;
     }
 
     &[open] summary div {
@@ -45,13 +48,13 @@ const { class: className = '', question, answer } = Astro.props
     }
 
     article {
-      @apply relative rounded-b-lg border-2 border-tertiary-color/30 p-4 bg-secondary-color/30 text-accent-color font-light;
+      @apply rounded-b-lg border-2 border-tertiary-color/30 p-4 bg-secondary-color text-accent-color font-light;
     }
 
     article div {
       background-image: radial-gradient(
         ellipse at left top,
-        #00ffc85e,
+        #00ffc82e,
         transparent
       );
     }
