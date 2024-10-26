@@ -3,12 +3,17 @@ export const PLANS = [
     id: 'primefit-plus',
     title: 'PrimeFit Plus',
     description:
-      'PrimeFit es un plan de 8 sesiones por mes para que transformas tu vida.',
+      '¿Quieres mejorar tu salud y forma física sin dejar tu hogar? PrimeFit es tu camino hacia una vida más activa y saludable.',
     cost: {
       value: '8',
       unit: 'sesiones'
     },
-    specs: ['Entrenador', 'Nutritionista', 'Desafío'],
+    specs: [
+      'Clase de cortesía',
+      'Diagnóstico completo',
+      'Alimentación',
+      'Acompañamiento completo'
+    ],
     form: [
       {
         name: 'nombre',
@@ -37,12 +42,17 @@ export const PLANS = [
     id: 'primefit',
     title: 'PrimeFit',
     description:
-      'PrimeFit es un plan que te permite explotar tus potenciales y encontrar la forma de vivir que realmente te guste.',
+      '¿Quieres un reto personalizado para mejorar tu salud y forma física? PrimeFit es tu camino hacia una vida más activa y saludable.',
     cost: {
       value: 'Reto'
       // unit: 'USD'
     },
-    specs: ['Entrenador', 'Nutritionista', 'Desafío'],
+    specs: [
+      '8 Semanas de entrenamiento',
+      'Videos explicativos y demostrativos',
+      'Plan y consejos de nutrición',
+      'Acceso a comunidad de apoyo'
+    ],
     form: [
       {
         name: 'nombre',
@@ -72,12 +82,17 @@ export const PLANS = [
     id: 'primefit-pro',
     title: 'PrimeFit Pro',
     description:
-      'PrimeFit es un plan de 12 sesiones por mes para que transformas tu vida.',
+      '¿Quieres mejorar tu salud y forma física sin dejar tu hogar? PrimeFit es tu camino hacia una vida más activa y saludable.',
     cost: {
       value: '12',
       unit: 'sesiones'
     },
-    specs: ['Entrenador', 'Nutritionista', 'Desafío'],
+    specs: [
+      'Clase de cortesía',
+      'Diagnóstico completo',
+      'Alimentación',
+      'Acompañamiento completo'
+    ],
     form: [
       {
         name: 'nombre',
