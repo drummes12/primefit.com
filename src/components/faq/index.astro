@@ -2,6 +2,7 @@
 import Section from '../section.astro'
 import ItemFaq from './item-faq.astro'
 import BgPrimefit from '../bg-primefit/index.astro'
+import { FAQ } from '@/consts/faq'
 ---
 
 <div class='relative'>
@@ -13,26 +14,11 @@ import BgPrimefit from '../bg-primefit/index.astro'
       Preguntas frecuentes
     </h1>
     <ul class='flex flex-col gap-4 w-full'>
-      <ItemFaq
-        question='¿Cuántos días de entrenamiento tengo?'
-        answer='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-      />
-      <ItemFaq
-        question='¿Cuántos días de entrenamiento tengo?'
-        answer='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-      />
-      <ItemFaq
-        question='¿Cuántos días de entrenamiento tengo?'
-        answer='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-      />
-      <ItemFaq
-        question='¿Cuántos días de entrenamiento tengo?'
-        answer='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-      />
-      <ItemFaq
-        question='¿Cuántos días de entrenamiento tengo?'
-        answer='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-      />
+      {
+        FAQ.map(({ question, answer }) => (
+          <ItemFaq question={question} answer={answer} />
+        ))
+      }
     </ul>
   </Section>
 </div>
