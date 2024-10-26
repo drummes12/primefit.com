@@ -2,33 +2,35 @@ export const FAQ = [
   {
     question: '¿Qué es un plan de entrenamiento personalizado?',
     answer:
-      'es un programa de ejercicios diseñado específicamente para adaptarse a las necesidades, objetivos y condición física de una persona. Puede incluir ejercicios de fuerza, cardio, flexibilidad, entre otros.'
-  },
-  {
-    question: '¿Cuánto tiempo se tarda en ver resultados?',
-    answer:
-      'Los resultados pueden variar según la persona, sus objetivos y el nivel de compromiso. Algunas personas pueden notar cambios en unas pocas semanas, mientras que otras pueden necesitar algunos meses.'
+      'Un plan de entrenamiento personalizado es un programa de ejercicios diseñado específicamente para adaptarse a las necesidades, objetivos y condición física de cada persona. Puede incluir ejercicios de fuerza, cardio, flexibilidad y otros, optimizando los resultados de forma individualizada.'
   },
   {
     question:
-      '¿Puedo hacer un plan de entrenamiento personalizado si tengo lesiones o condiciones médicas?',
+      '¿Cuánto tiempo se tarda en ver resultados con un entrenamiento personalizado?',
     answer:
-      'Sí, pero es importante informar al entrenador sobre cualquier lesión o condición médica. El plan se adaptará para evitar movimientos que puedan empeorar la situación y para incluir ejercicios que ayuden en la recuperación'
-  },
-  {
-    question: '¿Cuánto tiempo debería durar cada sesión de entrenamiento?',
-    answer:
-      'Generalmente, una sesión de entrenamiento puede durar entre 30 y 60 minutos, dependiendo del objetivo del programa y del nivel de condición física del individuo'
+      'El tiempo para ver resultados puede variar según el compromiso, objetivos y nivel físico de cada persona. Algunos pueden notar cambios positivos en pocas semanas, mientras que otros pueden ver resultados a lo largo de varios meses.'
   },
   {
     question:
-      '¿Cómo se mide el progreso con un plan de entrenamiento personalizado?',
+      '¿Puedo seguir un plan de entrenamiento personalizado si tengo lesiones o condiciones médicas?',
     answer:
-      'El progreso se puede medir mediante varios indicadores: cambios en la composición corporal (peso, porcentaje de grasa), aumento de fuerza, mejoras en el rendimiento cardiovascular'
+      'Sí, puedes seguir un plan de entrenamiento personalizado con lesiones o condiciones médicas, siempre que informes al entrenador. El plan se ajustará para evitar movimientos que empeoren la condición y para incluir ejercicios de apoyo a la recuperación.'
   },
   {
-    question: '¿Es adecuado para todos los niveles de condición física?',
+    question: '¿Cuánto tiempo dura cada sesión de entrenamiento personalizado?',
     answer:
-      'Algunos retos están diseñados para principiantes, mientras que otros son para niveles intermedios o avanzados. Es importante elegir un reto que se adapte a tu nivel actual y capacidades.'
+      'Una sesión de entrenamiento personalizado suele durar entre 30 y 60 minutos, según los objetivos y el nivel de condición física de cada persona. Este tiempo asegura una práctica efectiva y segura para obtener resultados óptimos.'
+  },
+  {
+    question:
+      '¿Cómo se mide el progreso en un plan de entrenamiento personalizado?',
+    answer:
+      'El progreso se mide a través de indicadores clave como cambios en la composición corporal (peso, porcentaje de grasa), aumento de fuerza, y mejoras en el rendimiento cardiovascular. Las mediciones se adaptan a cada objetivo de entrenamiento.'
+  },
+  {
+    question:
+      '¿Es adecuado el entrenamiento personalizado para todos los niveles de condición física?',
+    answer:
+      'Sí, el entrenamiento personalizado es adecuado para todos los niveles. Existen planes para principiantes, niveles intermedios y avanzados. Es fundamental seleccionar un plan que coincida con tu nivel actual y tus capacidades.'
   }
 ]
