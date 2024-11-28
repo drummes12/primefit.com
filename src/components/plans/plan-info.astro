@@ -1,0 +1,203 @@
+---
+import PlusIcon from '@/icons/plus.astro'
+import ScheckIcon from '@/icons/check.astro'
+---
+
+<dialog>
+  <div class='py-8 px-6 md:px-8 rounded-lg bg-background-color'>
+    <header class='flex items-start justify-between mb-3'>
+      <div>
+        <h1 class='text-3xl text-primary-color leading-none uppercase'></h1>
+        <h2 class='text-xl text-tertiary-color/50'></h2>
+      </div>
+      <button
+        class='p-1 rounded-full bg-primary-color text-background-color sm:bg-background-color border border-primary-color hover:bg-primary-color hover:scale-105 hover:text-background-color transition sm:text-primary-color'
+        aria-label='Close'><PlusIcon class='size-8 rotate-45' /></button
+      >
+    </header>
+
+    <div>
+      <p class='flex-1 text-base opacity-70'></p>
+      <ol
+        class='mt-6 w-fit text-lg divide-y-[1px] divide-accent-color/30 border-b-[1px] border-accent-color/30'
+        aria-label='planes'
+        aria-hidden='false'
+      >
+      </ol>
+    </div>
+  </div>
+
+  <form
+    class='hidden flex-col gap-4 py-8 px-4 md:px-8 rounded-lg bg-background-color'
+    method='dialog'
+  >
+    <h3 class='text-xl text-center text-primary-color my-5 uppercase'>
+      Envíar tus datos
+    </h3>
+    <div class='flex flex-wrap items-center justify-center gap-4'></div>
+    <button
+      type='submit'
+      class='w-full sm:max-w-64 mx-auto rounded-full bg-accent-color/20 py-2 px-4 border border-accent-color/10 hover:bg-primary-color hover:text-secondary-color hover:border-primary-color transition'
+      >Enviar</button
+    >
+  </form>
+</dialog>
+
+<template id='form-input-template'>
+  <div class='relative z-0 w-full sm:max-w-64 mb-5 group'>
+    <input
+      class='block py-2.5 px-0 w-full text-sm text-primary-color bg-transparent border-0 border-b-2 border-accent-color/10 appearance-none focus:outline-none focus:ring-0 focus:border-tertiary-color peer placeholder-transparent focus:placeholder-accent-color/30 autofill:bg-background-color'
+    />
+    <label
+      class='uppercase peer-focus:font-medium absolute text-sm text-primary-color/70 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-primary-color peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 line-clamp-1 truncate w-full overflow-hidden'
+    ></label>
+  </div>
+</template>
+
+<template id='input-specs-template'>
+  <li class='flex gap-2 items-center p-2'>
+    <ScheckIcon class='size-4 text-primary-color' />
+    <h4></h4>
+  </li>
+</template>
+
+<script>
+  import { PLANS } from '@/consts/plans'
+  import { $ } from '@/lib/dom-selector'
+
+  const $html = $('html') as HTMLHtmlElement
+  const $dialog = $('dialog') as HTMLDialogElement
+  const $buttonClose = $('dialog button') as HTMLButtonElement
+
+  $dialog.addEventListener('mousedown', (e) => {
+    if (e.target === $dialog) {
+      $html.classList.remove('overflow-hidden')
+      $dialog.close()
+    }
+  })
+  $buttonClose.addEventListener('click', () => {
+    $html.classList.remove('overflow-hidden')
+    $dialog.close()
+  })
+
+  PLANS.forEach(({ id, info }) => {
+    const { title, subtitle, description, specs, form } = info
+    const $plan = $('#plan-' + id)
+    const $planButton = $plan?.querySelector('button') as HTMLButtonElement
+    $planButton.addEventListener('click', () => {
+      $dialog.showModal()
+      $html.classList.add('overflow-hidden')
+
+      const $h1 = $dialog?.querySelector('h1') as HTMLHeadingElement
+      $h1.innerHTML = title
+      const $h2 = $dialog?.querySelector('h2') as HTMLHeadingElement
+      $h2.innerHTML = subtitle
+      const $p = $dialog?.querySelector('p') as HTMLParagraphElement
+      $p.innerHTML = description
+
+      const $ol = $dialog?.querySelector('ol') as HTMLOListElement
+      addSpecsInOl($ol, specs)
+
+      const $form = $dialog?.querySelector('form') as HTMLFormElement
+      $form.classList.add('hidden')
+      $form.classList.remove('flex')
+      if (form.length > 0) {
+        addInputsInForm($form, form)
+      }
+    })
+  })
+
+  function addSpecsInOl($ol: HTMLOListElement, specs: string[]) {
+    $ol.innerHTML = ''
+
+    const $templateInput = $('#input-specs-template') as HTMLTemplateElement
+    specs.forEach((spec) => {
+      const $newDiv = $templateInput.content.cloneNode(true) as HTMLDivElement
+      const $newLi = $newDiv.querySelector('li') as HTMLLIElement
+      const $newH4 = $newLi?.querySelector('h4')
+      if ($newH4) {
+        $newH4.innerHTML = spec
+      }
+      $ol.appendChild($newDiv)
+    })
+  }
+
+  function addInputsInForm(
+    $form: HTMLFormElement,
+    form: {
+      name: string
+      label: string
+      type: string
+      placeholder: string
+      required: boolean
+    }[]
+  ) {
+    const $reeplaceInputs = $form.querySelector('div') as HTMLDivElement
+    $reeplaceInputs.innerHTML = ''
+
+    const $templateInput = $('#form-input-template') as HTMLTemplateElement
+
+    form.forEach(({ name, label, type, placeholder, required }) => {
+      const $newDiv = $templateInput.content.cloneNode(true) as HTMLDivElement
+
+      const $newInput = $newDiv.querySelector('input') as HTMLInputElement
+      $newInput.setAttribute('type', type)
+      $newInput.setAttribute('name', name)
+      $newInput.setAttribute('placeholder', placeholder)
+      $newInput.setAttribute('required', required ? 'required' : '')
+
+      const $newLabel = $newDiv.querySelector('label') as HTMLLabelElement
+      $newLabel.setAttribute('for', name)
+      $newLabel.innerHTML = label
+
+      $reeplaceInputs.appendChild($newDiv)
+    })
+
+    $form.classList.remove('hidden')
+    $form.classList.add('flex')
+  }
+</script>
+
+<style>
+  dialog {
+    @apply w-[calc(100%-2rem)] max-w-screen-md overflow-y-auto overflow-x-clip bg-transparent space-y-4;
+
+    opacity: 0;
+    transform: translateY(-500%) scale(0);
+    transition:
+      opacity 0.3s ease-out,
+      transform 0.3s ease-out,
+      overlay 0.3s ease-out allow-discrete,
+      display 0.3s ease-out allow-discrete;
+  }
+
+  dialog[open] {
+    opacity: 1;
+    transform: translateY(0%) scale(1);
+  }
+
+  @starting-style {
+    dialog[open] {
+      opacity: 0;
+      transform: translateY(-500%) scale(0);
+    }
+  }
+
+  dialog::backdrop {
+    @apply bg-primary-color/0;
+    transition:
+      display 0.3s allow-discrete,
+      overlay 0.3s allow-discrete,
+      background-color 0.3s;
+  }
+
+  dialog[open]::backdrop {
+    @apply bg-secondary-color/30 backdrop-blur-sm;
+  }
+
+  @starting-style {
+    dialog[open]::backdrop {
+      @apply bg-secondary-color/30 backdrop-blur-sm;
+    }
+  }
+</style>

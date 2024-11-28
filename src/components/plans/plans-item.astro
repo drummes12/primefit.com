@@ -29,7 +29,7 @@ const { id, popular, title, description, cost, specs = [] } = Astro.props
   }
   <div class='w-full flex flex-col'>
     <h2 class='text-3xl text-primary-color mb-2'>{title}</h2>
-    <p class='flex-1 text-sm text-opacity-70 leading-tight line-clamp-4 h-20'>
+    <p class='text-sm text-opacity-70 leading-tight overflow-visible h-20 mb-4'>
       {description}
     </p>
 
