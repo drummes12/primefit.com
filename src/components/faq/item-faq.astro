@@ -9,14 +9,14 @@ const { class: className = '', question, answer } = Astro.props
 ---
 
 <li>
-  <details name='faq' class:list={[className, 'relative']} aria-hidden='true'>
+  <details name='faq' class:list={[className, 'relative']}>
     <summary>
       <h4 class='inline'>{question}</h4>
       <div class='absolute inset-0 transition delay-300'></div>
     </summary>
 
-    <article class='absolute top-full transition delay-300'>
-      <div class='absolute inset-0'></div>
+    <article class='top-full transition delay-300'>
+      <div class='inset-0'></div>
       <p class='z-10'>
         {answer}
       </p>
