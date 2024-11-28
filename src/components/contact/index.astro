@@ -1,8 +1,11 @@
 ---
+import Section from '../section.astro'
+
 import InstagramIcon from '@/icons/instagram.astro'
 import WhatsappIcon from '@/icons/whatsapp.astro'
 import PhoneIcon from '@/icons/phone.astro'
-import Section from '../section.astro'
+import CheckIcon from '@/icons/check.astro'
+import AlertIcon from '@/icons/alert.astro'
 ---
 
 <Section id='contacto' class='!p-0 !max-w-full'>
@@ -18,8 +21,10 @@ import Section from '../section.astro'
     class='mb-24 sm:mb-16 flex flex-col gap-8 sm:flex-row w-full h-full mx-auto max-w-screen-lg justify-center items-center'
   >
     <form
+      id='contact-form'
       class='flex-1 relative sm:min-w-96 w-full max-w-screen-sm h-full px-8 py-4 sm:py-16 flex flex-col justify-center items-start'
-      onsubmit='return false'
+      action='https://webhook.site/23770155-78c5-481f-99fc-7bdf950efe34'
+      method='POST'
     >
       <div
         class='-z-10 absolute top-0 left-0 aspect-square rounded-full bg-primary-color/20 w-80 blur-3xl'
@@ -92,6 +97,26 @@ import Section from '../section.astro'
         class='mt-4 w-min px-16 py-2 text-xl bg-primary-color text-background-color border border-primary-color backdrop-blur-sm hover:text-primary-color hover:bg-transparent hover:scale-105 transition'
         type='submit'>Enviar</button
       >
+      <p
+        id='success-status'
+        class='text-sm text-tertiary-color bg-tertiary-color/30 p-2 rounded-lg mt-4 flex items-center gap-2'
+      >
+        <CheckIcon class='size-10' />
+        <span>
+          Gracias por tu mensaje, nos pondremos en contacto contigo lo antes
+          posible
+        </span>
+      </p>
+      <p
+        id='alert-status'
+        class='text-sm text-red-100 bg-red-400/30 p-2 rounded-lg mt-4 flex items-center gap-2'
+      >
+        <AlertIcon class='size-10' />
+        <span>
+          Oops! Algo salió mal, intenta nuevamente o ponte en contacto con
+          nosotros
+        </span>
+      </p>
 
       <div class='mt-8'>
         <p class='uppercase text-sm text-primary-color/70'>
@@ -158,6 +183,58 @@ import Section from '../section.astro'
     </article>
   </div>
 </Section>
+
+<script>
+  import { $ } from '@/lib/dom-selector'
+
+  const $form = $('#contact-form') as HTMLFormElement
+  const $successStatus = $form.querySelector(
+    '#success-status'
+  ) as HTMLParagraphElement
+  const $alertStatus = $form.querySelector(
+    '#alert-status'
+  ) as HTMLParagraphElement
+  $successStatus.classList.add('hidden')
+  $alertStatus.classList.add('hidden')
+
+  $form.addEventListener('submit', handleSubmit)
+
+  function handleSubmit(e: Event) {
+    e.preventDefault()
+    $successStatus.classList.add('hidden')
+    $alertStatus.classList.add('hidden')
+
+    const formTarget = e.target as HTMLFormElement
+    const data = new FormData(formTarget)
+    fetch(formTarget.action, {
+      method: $form.method,
+      body: data,
+      headers: {
+        Accept: 'application/json'
+      }
+    })
+      .then((response) => {
+        if (response.ok) {
+          $successStatus.classList.remove('hidden')
+          $alertStatus.classList.add('hidden')
+          $form.reset()
+          return
+        }
+
+        response.json().then((data) => {
+          if (Object.hasOwn(data, 'errors')) {
+            throw new Error(data.errors.join(', '))
+          }
+          $alertStatus.classList.remove('hidden')
+          $successStatus.classList.add('hidden')
+        })
+      })
+      .catch(() => {
+        $alertStatus.classList.remove('hidden')
+        $successStatus.classList.add('hidden')
+      })
+  }
+</script>
 
 <style>
   h1 {
