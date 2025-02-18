@@ -6,6 +6,8 @@ import WhatsappIcon from '@/icons/whatsapp.astro'
 import PhoneIcon from '@/icons/phone.astro'
 import CheckIcon from '@/icons/check.astro'
 import AlertIcon from '@/icons/alert.astro'
+import DeviceIcon from '@/icons/device.astro'
+import PinnedIcon from '@/icons/pinned.astro'
 ---
 
 <Section id='contacto' class='!p-0 !max-w-full'>
@@ -23,7 +25,7 @@ import AlertIcon from '@/icons/alert.astro'
     <form
       id='contact-form'
       class='flex-1 relative sm:min-w-96 w-full max-w-screen-sm h-full px-8 py-4 sm:py-16 flex flex-col justify-center items-start'
-      action='https://webhook.site/23770155-78c5-481f-99fc-7bdf950efe34'
+      action='https://webhook.site/cf42a654-eca7-49b4-8133-4283664d19c3'
       method='POST'
     >
       <div
@@ -37,6 +39,7 @@ import AlertIcon from '@/icons/alert.astro'
           id='name'
           class='block py-2.5 px-0 w-full text-sm text-primary-color bg-transparent border-0 border-b-2 border-accent-color/10 appearance-none focus:outline-none focus:ring-0 focus:border-tertiary-color peer placeholder-transparent focus:placeholder-accent-color/30 autofill:bg-background-color'
           placeholder='PrimeFit'
+          autocapitalize='words'
           required
         />
         <label
@@ -79,12 +82,38 @@ import AlertIcon from '@/icons/alert.astro'
         </div>
       </div>
 
+      <div class='relative z-0 w-full mb-5 flex flex-row gap-2 items-center'>
+        <label
+          id='virtual'
+          class='flex-1 text-sm text-primary-color/70 uppercase flex items-center justify-end gap-2'
+          >Virtual<DeviceIcon class='size-6' /></label
+        >
+        <button
+          role='switch'
+          aria-checked='true'
+          id='switch-presencial'
+          name='switch-presencial'
+          class='switch w-14 h-8 p-1 rounded-full bg-primary-color/20 relative transition duration-1000 ease-in-out'
+        >
+          <div
+            class='absolute top-1 h-3/4 aspect-square rounded-full bg-primary-color transition'
+          >
+          </div>
+        </button>
+        <label
+          id='presencial'
+          class='flex-1 text-sm text-primary-color uppercase flex items-center justify-start gap-1'
+          ><PinnedIcon class='size-6' />Presencial</label
+        >
+      </div>
+
       <div class='relative z-0 w-full mb-5 group'>
         <textarea
           name='message'
           id='message'
           class='block py-2.5 px-0 w-full text-sm text-primary-color bg-transparent border-0 border-b-2 border-accent-color/10 appearance-none focus:outline-none focus:ring-0 focus:border-tertiary-color peer placeholder-transparent focus:placeholder-accent-color/30 autofill:bg-background-color [field-sizing:content] max-h-40 min-h-10'
           placeholder='Quiero mas información...'
+          autocapitalize='on'
           required></textarea>
         <label
           for='message'
@@ -188,12 +217,13 @@ import AlertIcon from '@/icons/alert.astro'
   import { $ } from '@/lib/dom-selector'
 
   const $form = $('#contact-form') as HTMLFormElement
-  const $successStatus = $form.querySelector(
-    '#success-status'
-  ) as HTMLParagraphElement
-  const $alertStatus = $form.querySelector(
-    '#alert-status'
-  ) as HTMLParagraphElement
+  const $successStatus = $('#success-status') as HTMLParagraphElement
+  const $alertStatus = $('#alert-status') as HTMLParagraphElement
+
+  const $switchPresencial = $('#switch-presencial') as HTMLButtonElement
+  const $labelPresencial = $('#presencial') as HTMLLabelElement
+  const $labelVirtual = $('#virtual') as HTMLLabelElement
+
   $successStatus.classList.add('hidden')
   $alertStatus.classList.add('hidden')
 
@@ -206,6 +236,12 @@ import AlertIcon from '@/icons/alert.astro'
 
     const formTarget = e.target as HTMLFormElement
     const data = new FormData(formTarget)
+    const presencialStatus =
+      $switchPresencial.getAttribute('aria-checked') === 'true'
+        ? 'presencial'
+        : 'virtual'
+    data.append('class_mode', presencialStatus)
+
     fetch(formTarget.action, {
       method: $form.method,
       body: data,
@@ -233,6 +269,46 @@ import AlertIcon from '@/icons/alert.astro'
         $alertStatus.classList.remove('hidden')
         $successStatus.classList.add('hidden')
       })
+  }
+
+  $switchPresencial.addEventListener('click', handleSwitchEvent, false)
+  $labelPresencial.addEventListener('click', handleOnSwitch, false)
+  $labelVirtual.addEventListener('click', handleOffSwitch, false)
+
+  function handleOnSwitch(evt: Event) {
+    evt.preventDefault()
+    onSwitch()
+  }
+  function handleOffSwitch(evt: Event) {
+    evt.preventDefault()
+    offSwitch()
+  }
+  function handleSwitchEvent(evt: Event) {
+    evt.preventDefault()
+    const el = evt.target as HTMLButtonElement
+
+    if (el.getAttribute('aria-checked') === 'true') {
+      offSwitch()
+    } else {
+      onSwitch()
+    }
+  }
+
+  function onSwitch() {
+    $labelPresencial.classList.remove('text-primary-color/70')
+    $labelVirtual.classList.remove('text-primary-color')
+
+    $labelPresencial.classList.add('text-primary-color')
+    $labelVirtual.classList.add('text-primary-color/70')
+    $switchPresencial.setAttribute('aria-checked', 'true')
+  }
+  function offSwitch() {
+    $labelPresencial.classList.remove('text-primary-color')
+    $labelVirtual.classList.remove('text-primary-color/70')
+
+    $labelVirtual.classList.add('text-primary-color')
+    $labelPresencial.classList.add('text-primary-color/70')
+    $switchPresencial.setAttribute('aria-checked', 'false')
   }
 </script>
 
@@ -292,5 +368,13 @@ import AlertIcon from '@/icons/alert.astro'
       transform: translateX(0);
       opacity: 1;
     }
+  }
+
+  [role='switch'][aria-checked='true'] div {
+    transform: translateX(100%);
+  }
+
+  [role='switch'][aria-checked='false'] div {
+    transform: translateX(0);
   }
 </style>
