@@ -3,7 +3,7 @@ import PlusIcon from '@/icons/plus.astro'
 import ScheckIcon from '@/icons/check.astro'
 ---
 
-<dialog>
+<dialog id='dialog-plan-info'>
   <div class='py-8 px-6 md:px-8 rounded-lg bg-background-color'>
     <header class='flex items-start justify-between mb-3'>
       <div>
@@ -19,7 +19,7 @@ import ScheckIcon from '@/icons/check.astro'
     <div>
       <p class='flex-1 text-base opacity-70'></p>
       <ol
-        class='mt-6 w-fit text-lg divide-y-[1px] divide-accent-color/30 border-b-[1px] border-accent-color/30'
+        class='mt-6 w-full text-lg divide-y-[1px] divide-accent-color/30 border-b-[1px] border-accent-color/30'
         aria-label='planes'
         aria-hidden='false'
       >
@@ -66,8 +66,8 @@ import ScheckIcon from '@/icons/check.astro'
   import { $ } from '@/lib/dom-selector'
 
   const $html = $('html') as HTMLHtmlElement
-  const $dialog = $('dialog') as HTMLDialogElement
-  const $buttonClose = $('dialog button') as HTMLButtonElement
+  const $dialog = $('#dialog-plan-info') as HTMLDialogElement
+  const $buttonClose = $('#dialog-plan-info button') as HTMLButtonElement
 
   $dialog.addEventListener('mousedown', (e) => {
     if (e.target === $dialog) {
