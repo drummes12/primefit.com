@@ -1,0 +1,160 @@
+---
+import InstagramIcon from '@/icons/instagram.astro'
+import MailIcon from '@/icons/mail.astro'
+import YoutubeIcon from '@/icons/youtube.astro'
+import WhatsappIcon from '@/icons/whatsapp.astro'
+import PlusIcon from '@/icons/plus.astro'
+---
+
+<dialog id='dialog-social-media'>
+  <div class='py-8 px-6 md:px-8 rounded-lg bg-background-color'>
+    <header class='flex items-start gap-8 justify-between mb-3'>
+      <div>
+        <h1 class='text-3xl text-primary-color leading-none uppercase'>
+          Redes Sociales
+        </h1>
+        <h2 class='text-xl text-primary-color uppercase font-bold'>
+          Prime<span class='text-accent-color'>Fit</span>
+        </h2>
+      </div>
+      <button
+        class='p-1 rounded-full bg-primary-color text-background-color sm:bg-background-color border border-primary-color hover:bg-primary-color hover:scale-105 hover:text-background-color transition sm:text-primary-color'
+        aria-label='Close'><PlusIcon class='size-8 rotate-45' /></button
+      >
+    </header>
+
+    <div>
+      <p class='flex-1 text-base opacity-70'></p>
+      <ol class='mt-6 w-fit text-lg' aria-label='social-media'>
+        <li>
+          <a
+            href='mailto:primefit02403@gmail.com'
+            target='_blank'
+            rel='noreferrer'
+            title='Envianos un correo'
+          >
+            <MailIcon />
+            <h4>primefit02403@gmail.com</h4>
+          </a>
+        </li>
+
+        <li>
+          <a
+            href='https://www.instagram.com/primefit_24?igsh=b2tuZXE4ZDBpYzlr'
+            target='_blank'
+            rel='noreferrer'
+            title='Visita Nuestra Página de Instagram'
+          >
+            <InstagramIcon />
+            <h4>@primefit_24</h4>
+          </a>
+        </li>
+
+        <li>
+          <a
+            href='https://youtube.com/@primefit24?si=g_SugFco9Y3uQIdE'
+            target='_blank'
+            rel='noreferrer'
+            title='Visita Nuestro canal de Youtube'
+          >
+            <YoutubeIcon />
+            <h4>@PrimeFit_24</h4>
+          </a>
+        </li>
+
+        <li>
+          <a
+            class='flex flex-row gap-2 hover:underline'
+            href='https://api.whatsapp.com/send?phone=573025441163&text=Hola%2C%20estoy%20interesado%20en%20un%20plan%20de%20entrenamiento%20personalizado.'
+            target='_blank'
+            rel='noreferrer'
+            title='Escríbenos por Whatsapp'
+          >
+            <WhatsappIcon class='size-6' />
+            <h4>+57 (300) 123-4567</h4>
+          </a>
+        </li>
+      </ol>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  import { $ } from '@/lib/dom-selector'
+
+  const $html = $('html') as HTMLHtmlElement
+  const $dialog = $('#dialog-social-media') as HTMLDialogElement
+  const $buttonClose = $('#dialog-social-media button') as HTMLButtonElement
+
+  $dialog.showModal()
+  $html.classList.add('overflow-hidden')
+
+  setTimeout(() => {
+    $dialog.close()
+    $html.classList.remove('overflow-hidden')
+  }, 10000)
+
+  $dialog.addEventListener('mousedown', (e) => {
+    if (e.target === $dialog) {
+      $html.classList.remove('overflow-hidden')
+      $dialog.close()
+    }
+  })
+  $buttonClose.addEventListener('click', () => {
+    $html.classList.remove('overflow-hidden')
+    $dialog.close()
+  })
+</script>
+
+<style>
+  dialog {
+    @apply w-fit max-w-screen-md overflow-y-auto overflow-x-clip bg-transparent space-y-4;
+
+    opacity: 0;
+    transform: translateY(-500%) scale(0);
+    transition:
+      opacity 1s ease-out,
+      transform 1s ease-out,
+      overlay 1s ease-out allow-discrete,
+      display 1s ease-out allow-discrete;
+  }
+
+  dialog[open] {
+    opacity: 1;
+    transform: translateY(0%) scale(1);
+  }
+
+  @starting-style {
+    dialog[open] {
+      opacity: 0;
+      transform: translateY(-500%) scale(0);
+    }
+  }
+
+  dialog::backdrop {
+    @apply bg-primary-color/0;
+    transition:
+      display 1s allow-discrete,
+      overlay 1s allow-discrete,
+      background-color 1s;
+  }
+
+  dialog[open]::backdrop {
+    @apply bg-secondary-color/30 backdrop-blur-sm;
+  }
+
+  @starting-style {
+    dialog[open]::backdrop {
+      @apply bg-secondary-color/30 backdrop-blur-sm;
+    }
+  }
+
+  dialog ol li a {
+    @apply flex gap-2 items-center p-2 text-accent-color italic no-underline;
+    transition: color 0.3s ease-out;
+
+    &:hover {
+      @apply text-primary-color not-italic underline;
+    }
+  }
+</style>
