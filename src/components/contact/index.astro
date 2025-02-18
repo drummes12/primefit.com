@@ -85,7 +85,7 @@ import PinnedIcon from '@/icons/pinned.astro'
       <div class='relative z-0 w-full mb-5 flex flex-row gap-2 items-center'>
         <label
           id='virtual'
-          class='flex-1 text-sm text-primary-color/70 uppercase flex items-center justify-end gap-2'
+          class='flex-1 text-sm text-primary-color/70 uppercase flex items-center justify-end gap-2 cursor-pointer'
           >Virtual<DeviceIcon class='size-6' /></label
         >
         <button
@@ -93,7 +93,7 @@ import PinnedIcon from '@/icons/pinned.astro'
           aria-checked='true'
           id='switch-presencial'
           name='switch-presencial'
-          class='switch w-14 h-8 p-1 rounded-full bg-primary-color/20 relative transition duration-1000 ease-in-out'
+          class='switch w-14 h-8 p-1 rounded-full bg-primary-color/20 relative transition duration-1000 ease-in-out cursor-pointer'
         >
           <div
             class='absolute top-1 h-3/4 aspect-square rounded-full bg-primary-color transition'
@@ -102,7 +102,7 @@ import PinnedIcon from '@/icons/pinned.astro'
         </button>
         <label
           id='presencial'
-          class='flex-1 text-sm text-primary-color uppercase flex items-center justify-start gap-1'
+          class='flex-1 text-sm text-primary-color uppercase flex items-center justify-start gap-1 cursor-pointer'
           ><PinnedIcon class='size-6' />Presencial</label
         >
       </div>
